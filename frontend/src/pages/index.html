@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>FullSport - Tu tienda deportiva online</title>
+    <meta name="description" content="Encuentra ropa, calzado y accesorios deportivos al mejor precio">
+
+    <!-- TailwindCSS -->
+    <link href="../styles/output.css" rel="stylesheet">
+</head>
+<link rel="icon" href="data:,">
+<body class="bg-gray-50 font-sans">
+    <!-- Header/Navegación -->
+    <header class="bg-black shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold">
+                    <a href="index.html" class="text-green-500">
+                        Full<span class="text-orange-500">Sport</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-white hover:text-green-400 font-medium">Inicio</a>
+                    <a href="productos.html" class="text-white hover:text-green-400 font-medium">Productos</a>
+                    <a href="#categorias" class="text-white hover:text-green-400 font-medium">Categorías</a>
+                    <a href="#contacto" class="text-white hover:text-green-400 font-medium">Contacto</a>
+                </div>
+
+                <!-- Carrito y menú móvil -->
+                <div class="flex items-center space-x-4">
+                    <a href="carrito.html" class="relative text-white hover:text-green-400">
+                        🛒
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full px-1" id="cart-counter">0</span>
+                    </a>
+                    
+                    <button class="md:hidden text-white hover:text-green-400" id="mobile-menu-button">
+                        ☰
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menú Móvil -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-2 pb-4">
+                    <a href="index.html" class="text-white hover:text-green-400 py-2">Inicio</a>
+                    <a href="productos.html" class="text-white hover:text-green-400 py-2">Productos</a>
+                    <a href="#categorias" class="text-white hover:text-green-400 py-2">Categorías</a>
+                    <a href="#contacto" class="text-white hover:text-green-400 py-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+        
+    <!-- Hero Section -->
+    <section class="hero bg-gradient-to-r from-green-600 via-orange-500 to-black text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Vive el deporte con <span class="text-green-400">Full</span><span class="text-orange-400">Sport</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                Ropa, calzado y accesorios para todos los deportes
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="productos.html" class="bg-green-500 text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105">
+                    Ver Productos
+                </a>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-black transition duration-300">
+                    Ofertas Especiales
+                </button>
+            </div>
+        </div>
+        
+        <!-- Elementos decorativos deportivos -->
+        <div class="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">⚽</div>
+        <div class="absolute bottom-10 right-10 text-6xl opacity-20 animate-pulse">🏋️</div>
+    </section>
+    
+    <!-- Categorías -->
+    <section id="categorias" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Categorías Deportivas</h2>
+                <p class="text-gray-600 text-lg">Encuentra lo que necesitas para entrenar y competir</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <div class="text-6xl mb-6">👟</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Calzado</h3>
+                    <p class="text-gray-600 mb-6">Zapatillas running, fútbol, básquet y más</p>
+                    <div class="text-green-600 font-semibold">Ver más →</div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <div class="text-6xl mb-6">👕</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Ropa</h3>
+                    <p class="text-gray-600 mb-6">Camisetas, shorts y outfits deportivos</p>
+                    <div class="text-green-600 font-semibold">Ver más →</div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <div class="text-6xl mb-6">🏀</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Accesorios</h3>
+                    <p class="text-gray-600 mb-6">Balones, guantes, maletas y más</p>
+                    <div class="text-green-600 font-semibold">Ver más →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Productos destacados -->
+    <section class="productos-destacados py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Productos Destacados</h2>
+                <p class="text-gray-600 text-lg">Los más populares de nuestra tienda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- PRODUCTO 1 -->
+                <div class="border rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-64 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-6xl">👟</span>
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                            -20%
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Nike Air Zoom</h3>
+                        <p class="text-gray-600 mb-4">Zapatillas de running de alto rendimiento</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                            <span class="text-gray-500 text-sm ml-2">(120 reseñas)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$499</span>
+                                <span class="text-3xl font-bold text-green-600 ml-2">$399</span>
+                            </div>
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2 -->
+                <div class="border rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-64 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-6xl">👕</span>
+                        <div class="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                            NUEVO
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Camiseta Dry-Fit</h3>
+                        <p class="text-gray-600 mb-4">Tela ligera y transpirable para entrenamientos</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">⭐⭐⭐⭐</div>
+                            <span class="text-gray-500 text-sm ml-2">(85 reseñas)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-green-600">$59</span>
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3 -->
+                <div class="border rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-64 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-6xl">🏀</span>
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                            TOP
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Balón Spalding NBA</h3>
+                        <p class="text-gray-600 mb-4">Balón oficial de baloncesto de alta calidad</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                            <span class="text-gray-500 text-sm ml-2">(200 reseñas)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-green-600">$89</span>
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botón ver más -->
+            <div class="text-center mt-12">
+                <a href="productos.html" class="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition transform hover:scale-105">
+                    Ver Todos los Productos
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contacto" class="bg-black text-white py-12 text-center">
+        <p class="text-lg">© 2025 FullSport - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>
