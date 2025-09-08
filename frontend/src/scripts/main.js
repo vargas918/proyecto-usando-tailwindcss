@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remover después de 3 segundos
         setTimeout(() => {
             document.body.removeChild(notification);
-        }, 3000);
+        }, 1500);
     }
     
     // EVENT LISTENERS

@@ -26,16 +26,16 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-white hover:text-green-400 font-medium">Inicio</a>
-                    <a href="productos.html" class="text-white hover:text-green-400 font-medium">Productos</a>
+                    <a href="productos.html" class="text-white  font-medium">Productos</a>
                     <a href="#categorias" class="text-white hover:text-green-400 font-medium">Categorías</a>
-                    <a href="#contacto" class="text-white hover:text-green-400 font-medium">Contacto</a>
+                    <a href="contacto.html" class="text-white hover:text-green-400 font-medium">Contacto</a>
                 </div>
 
                 <!-- Carrito y menú móvil -->
                 <div class="flex items-center space-x-4">
                     <a href="carrito.html" class="relative text-white hover:text-green-400">
                         🛒
-                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full px-1" id="cart-counter">0</span>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-black text-xs rounded-lg px-1" id="cart-counter">0</span>
                     </a>
                     
                     <button class="md:hidden text-white hover:text-green-400" id="mobile-menu-button">
@@ -50,7 +50,7 @@
                     <a href="index.html" class="text-white hover:text-green-400 py-2">Inicio</a>
                     <a href="productos.html" class="text-white hover:text-green-400 py-2">Productos</a>
                     <a href="#categorias" class="text-white hover:text-green-400 py-2">Categorías</a>
-                    <a href="#contacto" class="text-white hover:text-green-400 py-2">Contacto</a>
+                    <a href="contacto.html" class="text-white hover:text-green-400 py-2">Contacto</a>
                 </div>
             </div>
         </nav>
@@ -143,7 +143,7 @@
                                 <span class="text-gray-400 line-through text-sm">$499</span>
                                 <span class="text-3xl font-bold text-green-600 ml-2">$399</span>
                             </div>
-                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-btn">
                                 Comprar
                             </button>
                         </div>
@@ -167,7 +167,7 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-3xl font-bold text-green-600">$59</span>
-                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-btn">
                                 Comprar
                             </button>
                         </div>
@@ -191,7 +191,7 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-3xl font-bold text-green-600">$89</span>
-                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-button
+                            <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition add-to-cart-btn">
                                 Comprar
                             </button>
                         </div>
@@ -201,17 +201,69 @@
             
             <!-- Botón ver más -->
             <div class="text-center mt-12">
-                <a href="productos.html" class="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition transform hover:scale-105">
+                <a href="productos.html" class=" text-white bg-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition transform hover:scale-105">
                     Ver Todos los Productos
                 </a>
             </div>
         </div>
     </section>
+
+    <!--formulario-->
+    <div class="bg-gray-300 p-4 mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4 text-black">¡Mantente al día!</h2>
+    <p class="text-xl mb-8 opacity-90 text-black">Suscríbete y recibe las mejores ofertas antes que nadie</p>
     
-    <!-- Footer -->
-    <footer id="contacto" class="bg-black text-white py-12 text-center">
-        <p class="text-lg">© 2025 FullSport - Todos los derechos reservados</p>
-    </footer>
+    <!-- AQUÍ VAS A AGREGAR EL FORMULARIO -->
+     <div class="max-w-md mx-auto flex gap-4   ">
+    <input class="border  rounded-lg px-4 " type="email" placeholder="Ingrese su correo" 
+           class="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+    <button class="bg-white border  text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+        Suscribete
+    </button>
+</div>
+    
+</div>
+
+    <!--Footer-->
+<div class=" mx-auto px-4 bg-black">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- COLUMNA 1: EMPRESA (Ejemplo completo) -->
+        <div>
+            <h3 class="text-2xl font-bold mb-4 text-white p-4">FullSport</h3>
+            <p class="text-gray-400 mb-4">Activa Sport es un pequeño negocio dedicado a promover la vida saludable a través de la venta de productos deportivos y clases de entrenamiento personalizadas. Nuestro objetivo es acercar el deporte a la comunidad de forma accesible y amigable.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">📘</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">🐦</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">📷</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">📺</a>
+            </div>
+        </div>
+        
+        <!-- COLUMNA 2: PRODUCTOS (Ejemplo completo) -->
+        <div>
+            <h4 class="font-bold mb-4 text-lg text-white p-4">Productos</h4>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="productos.html" class="hover:text-white transition">Laptops</a></li>
+                <li><a href="productos.html" class="hover:text-white transition">Celulares</a></li>
+                <li><a href="productos.html" class="hover:text-white transition">Componentes</a></li>
+                <li><a href="productos.html" class="hover:text-white transition">Gaming</a></li>
+                <li><a href="productos.html" class="hover:text-white transition">Accesorios</a></li>
+            </ul>
+        </div>
+        
+        <!-- AQUÍ VAN LAS 2 COLUMNAS QUE TÚ VAS A CREAR -->
+        
+    </div>
+    
+    <!-- COPYRIGHT -->
+    <div class="border-t border-white mt-8 pt-8 text-center text-white">
+        <p>&copy; 2024 FullSport. Todos los derechos reservados. | 
+           <a href="#" class="hover:text-white transition">Política de Privacidad</a> | 
+           <a href="#" class="hover:text-white transition">Términos de Servicio</a>
+        </p>
+    </div>
+</div>
 
     <script src="../scripts/main.js"></script>
 </body>
