@@ -13,14 +13,16 @@ laptops, celulares y componentes PC"
     <link href="../styles/output.css" rel="stylesheet" />
     <link rel="icon" href="data:," />
   </head>
-  <body class="bg-gray-50 font-sans">
+  <body class="bg-orange-100 font-sans">
     <!-- HEADER - Igual que index.html -->
     <header class="bg-black shadow-lg sticky top-0 z-50">
       <nav class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
           <!-- Logo -->
           <div class="text-2xl font-bold text-green-500">
-            <a href="index.html">Full<span class="text-orange-500">Sport </span></a>
+            <a href="index.html"
+              >Full<span class="text-orange-500">Sport </span></a
+            >
           </div>
           <!-- Desktop Menu -->
           <div class="hidden md:flex space-x-6">
@@ -30,13 +32,8 @@ laptops, celulares y componentes PC"
               >Inicio</a
             >
 
-            <a href="productos.html" class=" text-green-400 font- semibold"
+            <a href="productos.html" class="text-green-400 font- semibold"
               >Productos</a
-
-
-
-
-
             >
 
             <a
@@ -74,11 +71,7 @@ laptops, celulares y componentes PC"
               </svg>
 
               <span
-                class="absolute -top-2 -right-2 bg-orange-500
-                
-                
-                
-                text- white text-xs rounded-full px-1"
+                class="absolute -top-2 -right-2 bg-orange-500 text- white text-xs rounded-full px-1"
                 id="cart-counter"
                 >0</span
               >
@@ -132,10 +125,10 @@ laptops, celulares y componentes PC"
     <main class="max-w-7xl mx-auto px-4 py-8">
       <!-- Breadcrumbs y Título -->
       <div class="mb-8">
-        <nav class="text-sm  text-gray-600 mb-4">
+        <nav class="text-sm text-gray-600 mb-4 border-b border-gray-300 pb-2">
           <a
             href="index.html"
-            class="hover:text-blue-600 transition-colors duration-200"
+            class="hover:text-green-600 transition-colors duration-200"
             >Inicio</a
           >
           <span class="mx-2">></span>
@@ -146,6 +139,7 @@ laptops, celulares y componentes PC"
           Encuentra la mejor tecnología al mejor precio
         </p>
       </div>
+
       <!-- BUSCADOR Y FILTROS -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
         <!-- Barra de Búsqueda -->
@@ -211,7 +205,7 @@ laptops, celulares y componentes PC"
           </div>
           <!-- Filtro Ordenamiento -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb- 2"
+            <label class="block text-sm font-medium text-gray-700 mb-6"
               >Ordenar por</label
             >
 
@@ -229,87 +223,63 @@ laptops, celulares y componentes PC"
         </div>
       </div>
       <!-- GRID DE PRODUCTOS -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        id="products-grid"
-      >
-        <!-- PRODUCTO 1: MacBook Pro -->
-        <div
-          class="bg-white  border  rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product- card"
-          data-category="laptops"
-          data-price="6200000"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center relative"
-          >
-            <img src="" alt="" >
-            <div
-              class="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold"
-            >
-              -15%
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-6" id="products-grid">
+            <!-- PRODUCTO 1: Conjunto Deportivo -->
+            <div class="border  rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card" data-product-id="conjunto_deportivo">
+            <div class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden">
+                <span><img src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"></span>
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                    -15%
+                </div>
+            </div>
+            <div class="p-6 bg-black" >
+                <h3 class="font-bold text-xl mb-2 text-white">Conjunto Deportivo</h3>
+                <p class="text-white mb-4">Ideal para entrenamientos en gimnasio.</p>
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+                    <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-gray-400 line-through text-sm">$2,899</span>
+                        <span class="text-3xl font-bold text-blue-600 ml-2">$2,499</span>
+                    </div>
+                   <div class="flex space-x-2">
+                        <a href="producto-detalle.html?id=conjunto_deportivo" class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center">
+                        Ver Detalles
+                        </a>
+                        <button class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm" data-product-id="conjunto_deportivo">
+                         Comprar
+                    </button>
+                    </div>
+                </div>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-lg font-bold mb-2 text-gray-800">
-              MacBook Pro 16" M3
-            </h3>
-            <p class="text-sm text-gray-600 mb-4">
-              Chip M3, 16GB RAM, 512GB SSD
-            </p>
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <span class="text-2xl font-bold text-blue- 600"
-                  >$6.200.000</span
-                >
 
-                <span class="text-sm text-gray-500 line-through ml- 2"
-                  >$7.450.000</span
-                >
-              </div>
-
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-            </div>
-            <button
-              class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 add-to-cart-btn"
-            >
-              Agregar al Carrito
-            </button>
-          </div>
-        </div>
-      </div>
       <!-- PAGINACIÓN -->
-      <div class="mt-12 flex justify-center">
-        <nav class="flex space-x-2">
-          <button
-            class="px-4 py-2 border border-black rounded-lg text- gray-500 hover:bg-green-400 disabled:opacity-50"
-           
-          >
-            Anterior
-          </button>
+     <div class="mt-12 flex justify-center">
+  <nav class="flex gap-2">
+    <button class="px-4 py-2 bg-white border border-black rounded-lg text-gray-500 hover:bg-green-500 transition">
+      Anterior
+    </button>
 
-          <button class="px-4 py-2 border border-black rounded-lg hover:bg-green-400 text-black rounded- lg">
-            1
-          </button>
+    <button class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition">
+      1
+    </button>
 
-          <button
-            class="px-4 py-2 border border-black rounded-lg text-black hover:bg-green-400"
-          >
-            2
-          </button>
+    <button class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition">
+      2
+    </button>
 
-          <button
-            class="px-4 py-2 border border-black rounded-lg text-black hover:bg-green-400"
-          >
-            3
-          </button>
+    <button class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition">
+      3
+    </button>
 
-          <button
-            class="px-4 py-2 border border-black rounded-lg text-black hover:bg-green-400 " 
-          >
-            Siguiente
-          </button>
-        </nav>
-      </div>
+    <button class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition">
+      Siguiente
+    </button>
+  </nav>
+</div>
     </main>
     <!-- FOOTER - Igual que index.html -->
     <footer class="bg-black text-white py-12 mt-16">
@@ -411,9 +381,7 @@ laptops, celulares y componentes PC"
           </div>
         </div>
 
-        <div
-          class="border-t border-white mt-8 pt-8 text-center text-gray- 400"
-        >
+        <div class="border-t border-white mt-8 pt-8 text-center text-gray- 400">
           <p>&copy; 2025 TechStore Pro. Todos los derechos reservados.</p>
         </div>
       </div>
