@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacBook Pro 16" M3 - TechStore Pro</title>
+    <meta name="description" content="MacBook Pro 16 pulgadas con chip M3, 16GB RAM y 512GB SSD. El mejor rendimiento para profesionales.">
+    
+    <!-- TailwindCSS -->
+    <link href="../styles/output.css" rel="stylesheet">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- HEADER - Igual que otras páginas -->
+    <header class="bg-black shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-green-500">
+                    <a href="index.html">Full<span class="text-orange-500">Sport </span></a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-white hover:text-green-400 font-medium">Inicio</a>
+                    <a href="productos.html" class="text-white hover:text-green-400 font-medium">Productos</a>
+                    <a href="index.html#categorias" class="text-white hover:text-green-400 font-medium">Categorías</a>
+                    <a href="contacto.html" class="text-white hover:text-green-400 font-medium">Contacto</a>
+                </div>
+
+                <!-- Cart and Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Carrito -->
+                    <a href="carrito.html" class="relative text-white hover:text-green-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13l-1.1 5m0 0h3.1M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1" id="cart-counter">0</span>
+                    </a>
+                    
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-gray-700 hover:text-blue-600" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-2 pb-4">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 py-2">Inicio</a>
+                    <a href="productos.html" class="text-gray-700 hover:text-blue-600 py-2">Productos</a>
+                    <a href="index.html#categorias" class="text-gray-700 hover:text-blue-600 py-2">Categorías</a>
+                    <a href="contacto.html" class="text-gray-700 hover:text-blue-600 py-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BREADCRUMBS -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <nav class="text-sm text-gray-600">
+                <a href="index.html" class="hover:text-blue-600 transition-colors duration-200">Inicio</a>
+                <span class="mx-2">></span>
+                <a href="productos.html" class="hover:text-blue-600 transition-colors duration-200">Productos</a>
+                <span class="mx-2">></span>
+                <a href="productos.html?categoria=laptops" class="hover:text-blue-600 transition-colors duration-200">Laptops</a>
+                <span class="mx-2">></span>
+                <span class="text-gray-900">MacBook Pro 16" M3</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- LAYOUT PRINCIPAL: GALERÍA + INFORMACIÓN -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            
+            <!-- GALERÍA DE IMÁGENES (Lado Izquierdo) -->
+            <div class="space-y-4">
+                <!-- Imagen Principal - CON ID CORRECTO -->
+                <div id="main-image" class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden aspect-square flex items-center justify-center relative">
+                    <span class="text-8xl filter drop-shadow-lg">💻</span>
+                    <!-- Badge de descuento -->
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        -15%
+                    </div>
+                </div>
+                
+                <!-- Miniaturas - CON CLASE CORRECTA -->
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="thumbnail-image bg-gray-100 rounded-lg aspect-square flex items-center justify-center cursor-pointer hover:bg-gray-200 transition border-2 border-blue-500 opacity-70">
+                        <span class="text-2xl">💻</span>
+                    </div>
+                    <div class="thumbnail-image bg-gray-100 rounded-lg aspect-square flex items-center justify-center cursor-pointer hover:bg-gray-200 transition opacity-70">
+                        <span class="text-2xl">⌨️</span>
+                    </div>
+                    <div class="thumbnail-image bg-gray-100 rounded-lg aspect-square flex items-center justify-center cursor-pointer hover:bg-gray-200 transition opacity-70">
+                        <span class="text-2xl">🖥️</span>
+                    </div>
+                    <div class="thumbnail-image bg-gray-100 rounded-lg aspect-square flex items-center justify-center cursor-pointer hover:bg-gray-200 transition opacity-70">
+                        <span class="text-2xl">🔌</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN DEL PRODUCTO (Lado Derecho) -->
+            <div class="space-y-6">
+                
+                <!-- Título y Precio -->
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">MacBook Pro 16" M3</h1>
+                    <p class="text-lg text-gray-600 mb-4">Chip M3 de Apple, 16GB RAM, 512GB SSD</p>
+                    
+                    <!-- Calificación -->
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            ⭐⭐⭐⭐⭐
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">(89 reseñas)</span>
+                        <a href="#reviews" class="ml-2 text-sm text-blue-600 hover:underline">Ver todas</a>
+                    </div>
+
+                    <!-- Precio -->
+                    <div class="flex items-center space-x-4 mb-6">
+                        <span class="text-4xl font-bold text-blue-600">$2,499</span>
+                        <span class="text-xl text-gray-500 line-through">$2,999</span>
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded-lg text-sm font-semibold">
+                            Ahorra $500
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Disponibilidad -->
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-green-800 font-medium">En stock - Envío inmediato</span>
+                    </div>
+                    <p class="text-green-700 text-sm mt-1">Últimas 3 unidades disponibles</p>
+                </div>
+
+                <!-- Selector de Cantidad - CON IDS CORRECTOS -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Cantidad:</label>
+                        <div class="flex items-center space-x-3">
+                            <button id="quantity-decrease" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition">
+                                <span class="text-lg font-medium">-</span>
+                            </button>
+                            <input id="quantity-input" type="number" value="1" min="1" max="10" class="w-16 text-center border border-gray-300 rounded-lg py-2">
+                            <button id="quantity-increase" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition">
+                                <span class="text-lg font-medium">+</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción - CON IDS CORRECTOS -->
+                <div class="space-y-3">
+                    <!-- Agregar al Carrito -->
+                    <button id="add-to-cart-btn" class="w-full bg-blue-600 text-white py-4 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                        Agregar al Carrito
+                    </button>
+                    
+                    <!-- Comprar Ahora -->
+                    <button id="buy-now-btn" class="w-full bg-green-600 text-white py-4 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                        Comprar Ahora
+                    </button>
+
+                    <!-- Botones Secundarios -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            Favoritos
+                        </button>
+                        <button class="flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                            </svg>
+                            Compartir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Información de Envío -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-blue-900 mb-2">Información de Envío</h3>
+                    <div class="space-y-2 text-sm text-blue-800">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Envío gratis en compras superiores a $500
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Entrega en 1-2 días hábiles
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Garantía de 2 años
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESCRIPCIÓN BÁSICA -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Descripción del Producto</h2>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    El MacBook Pro de 16 pulgadas con chip M3 redefine la potencia y eficiencia en una laptop profesional. 
+                    Diseñado para creativos, desarrolladores y profesionales que demandan el máximo rendimiento.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Con su revolucionario chip M3, este MacBook Pro ofrece un rendimiento hasta 2.5x más rápido que los 
+                    modelos anteriores, manteniendo una eficiencia energética excepcional que te permite trabajar todo el día.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-3xl mb-2">⚡</div>
+                        <h3 class="font-semibold mb-1">Chip M3</h3>
+                        <p class="text-sm text-gray-600">Rendimiento profesional</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-3xl mb-2">🧠</div>
+                        <h3 class="font-semibold mb-1">16GB RAM</h3>
+                        <p class="text-sm text-gray-600">Multitarea sin límites</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-3xl mb-2">💾</div>
+                        <h3 class="font-semibold mb-1">512GB SSD</h3>
+                        <p class="text-sm text-gray-600">Almacenamiento ultrarrápido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Especificaciones Técnicas -->
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Especificaciones Técnicas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Columna 1: Procesador y Memoria -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Rendimiento</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Procesador:</span>
+                            <span class="text-gray-900 font-semibold">Apple M3 Pro (12 núcleos)</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Memoria RAM:</span>
+                            <span class="text-gray-900 font-semibold">16 GB DDR5</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Almacenamiento:</span>
+                            <span class="text-gray-900 font-semibold">512 GB SSD</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">GPU:</span>
+                            <span class="text-gray-900 font-semibold">GPU M3 Pro (18 núcleos)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Pantalla y Conectividad -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Pantalla y Conectividad</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Pantalla:</span>
+                            <span class="text-gray-900 font-semibold">16.2" Liquid Retina XDR</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Resolución:</span>
+                            <span class="text-gray-900 font-semibold">3456 x 2234 píxeles</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Puertos:</span>
+                            <span class="text-gray-900 font-semibold">3x USB-C, HDMI, SD</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Peso:</span>
+                            <span class="text-gray-900 font-semibold">2.1 kg</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                            <span class="text-gray-600 font-medium">Batería:</span>
+                            <span class="text-gray-900 font-semibold">Hasta 22 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Sistema de Reviews -->
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Opiniones de Clientes</h2>
+            
+            <!-- Resumen de calificaciones -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Calificación general -->
+                <div class="text-center lg:text-left">
+                    <div class="flex items-center justify-center lg:justify-start mb-4">
+                        <span class="text-5xl font-bold text-gray-900 mr-4">4.8</span>
+                        <div>
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400 text-xl">
+                                    ★★★★★
+                                </div>
+                            </div>
+                            <p class="text-gray-600">Basado en 127 reseñas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Distribución de estrellas -->
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 w-12">5★</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 78%"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 w-8">78%</span>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 w-12">4★</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 15%"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 w-8">15%</span>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 w-12">3★</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 5%"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 w-8">5%</span>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 w-12">2★</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 1%"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 w-8">1%</span>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 w-12">1★</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 1%"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 w-8">1%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reviews individuales -->
+            <div class="space-y-6">
+                <!-- Review 1 -->
+                <div class="border-b border-gray-200 pb-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            M
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-900">Miguel Rodriguez</h4>
+                                <span class="text-sm text-gray-500">Hace 2 días</span>
+                            </div>
+                            <div class="flex items-center mb-3">
+                                <div class="flex text-yellow-400 mr-2">★★★★★</div>
+                                <span class="text-sm text-gray-600">Compra verificada</span>
+                            </div>
+                            <p class="text-gray-700 mb-3">
+                                "Excelente laptop para desarrollo. La velocidad del procesador M3 es impresionante y la pantalla tiene una calidad increíble. Totalmente recomendada para profesionales."
+                            </p>
+                            <button class="text-blue-600 text-sm hover:underline">¿Te resultó útil? (12)</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="border-b border-gray-200 pb-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-900">Ana García</h4>
+                                <span class="text-sm text-gray-500">Hace 1 semana</span>
+                            </div>
+                            <div class="flex items-center mb-3">
+                                <div class="flex text-yellow-400 mr-2">★★★★★</div>
+                                <span class="text-sm text-gray-600">Compra verificada</span>
+                            </div>
+                            <p class="text-gray-700 mb-3">
+                                "Perfecta para diseño gráfico. Los colores se ven espectaculares y no se calienta para nada. La batería dura todo el día de trabajo."
+                            </p>
+                            <button class="text-blue-600 text-sm hover:underline">¿Te resultó útil? (8)</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="pb-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                            J
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-900">José Martinez</h4>
+                                <span class="text-sm text-gray-500">Hace 2 semanas</span>
+                            </div>
+                            <div class="flex items-center mb-3">
+                                <div class="flex text-yellow-400 mr-2">★★★★☆</div>
+                                <span class="text-sm text-gray-600">Compra verificada</span>
+                            </div>
+                            <p class="text-gray-700 mb-3">
+                                "Muy buena máquina, aunque esperaba que fuera un poco más rápida para gaming. Para trabajo office y edición es perfecta."
+                            </p>
+                            <button class="text-blue-600 text-sm hover:underline">¿Te resultó útil? (5)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botón ver más reviews -->
+            <div class="text-center mt-6">
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Ver todas las reseñas
+                </button>
+            </div>
+        </section>
+
+          <!-- Productos Relacionados -->
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Productos Relacionados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Producto relacionado 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-4xl">💻</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm">MacBook Air M3</h3>
+                        <p class="text-gray-600 text-xs mb-3">13" - 256GB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1,199</span>
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition duration-300">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto relacionado 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-4xl">💻</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm">MacBook Pro 14" M3</h3>
+                        <p class="text-gray-600 text-xs mb-3">14" - 512GB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1,899</span>
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition duration-300">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto relacionado 3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-4xl">⌨️</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm">Magic Keyboard</h3>
+                        <p class="text-gray-600 text-xs mb-3">Con Touch ID</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$199</span>
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition duration-300">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto relacionado 4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-4xl">🖱️</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm">Magic Mouse</h3>
+                        <p class="text-gray-600 text-xs mb-3">Multi-Touch</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$99</span>
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition duration-300">
+                                Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- FOOTER - Igual que otras páginas -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TechStore Pro</h3>
+                    <p class="text-gray-400 mb-4">Tu tienda de tecnología de confianza con los mejores productos y precios del mercado.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">🦋</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Enlaces</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors duration-200">Inicio</a></li>
+                        <li><a href="productos.html" class="hover:text-white transition-colors duration-200">Productos</a></li>
+                        <li><a href="carrito.html" class="hover:text-white transition-colors duration-200">Carrito</a></li>
+                        <li><a href="contacto.html" class="hover:text-white transition-colors duration-200">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Atención al Cliente</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="contacto.html" class="hover:text-white transition-colors duration-200">Contacto</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Envíos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Devoluciones</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Garantías</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Política de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 TechStore Pro. Todos los derechos reservados.</p>
+                <p class="mt-2 text-sm">Desarrollado con tecnología colombiana</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+   
+<script src="../scripts/main.js"></script>
+<script src="../scripts/producto-detalle.js"></script>
+<script src="../scripts/product-url-handler.js"></script>
+
+
+
+    
+    <!-- Script específico para producto-detalle (Manual 1B) -->
+    <!-- <script src="../scripts/producto-detalle.js"></script> -->
+
+</body>
+
+</html>
