@@ -13,7 +13,7 @@ laptops, celulares y componentes PC"
     <link href="../styles/output.css" rel="stylesheet" />
     <link rel="icon" href="data:," />
   </head>
-  <body class="bg-orange-100 font-sans">
+  <body class="bg-gradient-to-b from-orange-100 bg-orange-100 to-white font-sans">
     <!-- HEADER - Igual que index.html -->
     <header class="bg-black shadow-lg sticky top-0 z-50">
       <nav class="container mx-auto px-4 py-4">
@@ -230,15 +230,116 @@ laptops, celulares y componentes PC"
       >
         <!-- PRODUCTO 1: Conjunto Deportivo -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="zapatos_deportivos"
+  class="border rounded-2xl overflow-hidden shadow-lg shadow-gray-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
+  data-product-id="zapatos_deportivos"
+>
+  <div
+    class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
+  >
+    <span>
+      <img
+        src="../assets/images/calzado2.jpg"
+        class="w-full h-full object-contain"
+        alt="Producto"
+      />
+    </span>
+    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
+    >
+      -15%
+    </div>
+  </div>
+
+  <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+    <h3 class="font-bold text-xl mb-2 text-black">Conjunto Deportivo</h3>
+    <p class="text-black mb-4">Ideal para entrenamientos en gimnasio.</p>
+
+    <div class="flex items-center mb-4">
+      <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+      <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
+    </div>
+
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <span class="text-gray-500 line-through text-sm">$2,899</span>
+        <span class="text-3xl font-bold text-green-600 ml-2">$2,499</span>
+      </div>
+    </div>
+
+    <!-- Botones mejor organizados -->
+    <div class="grid grid-cols-2 gap-3">
+      <a
+        href="producto-detalle.html?id=zapatos_deportivos"
+        class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 text-sm text-center"
+      >
+        Ver Detalles
+      </a>
+      <button
+        class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 text-sm"
+        data-product-id="zapatos_deportivos"
+      >
+        Comprar
+      </button>
+    </div>
+  </div>
+</div>
+
+        <!-- PRODUCTO 2: guantes_deportivos -->
+        <div class="border rounded-2xl  overflow-hidden shadow-lg shadow-gray-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="guantes_deportivos">
+          <div class="bg-white  h-64 flex items-center justify-center relative overflow-hidden">
+            <span><img src="../assets/images/guantes_portero.jpg" class="w-full h-full object-contain" alt="Producto" /></span>
+            <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+              -15%
+            </div>
+          </div>
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-black">
+              Conjunto Deportivo
+            </h3>
+            <p class="text-black mb-4">
+              Ideal para entrenamientos en gimnasio.
+            </p>
+
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+              <div>
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
+                  >$2,499</span
+                >
+              </div>
+             </div>
+              
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  href="producto-detalle.html?id=guantes_deportivos"
+                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300  text-sm text-center"
+                >
+                  Ver Detalles
+                </a>
+                <button
+                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300  text-sm"
+                  data-product-id="guantes_deportivos"
+                >
+                  Comprar
+                </button>
+              </div>
+            </div>
+        </div>
+        <!-- PRODUCTO 3: guantes_deportivos -->
+        <div
+          class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="voleibol"
         >
           <div
             class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="../assets/images/calzado2.jpg " class="w-full h-full object-contain"
+                src="../assets/images/voley.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -247,52 +348,52 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-blac">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
+            <p class="text-black mb-4">
               Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
+            </div>
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=zapatos_deportivos"
+                  href="producto-detalle.html?id=voleibol"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="zapatos_deportivos"
+                  data-product-id="voleibol"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
         </div>
-        <!-- PRODUCTO 2: guantes_deportivos -->
+<!-- PRODUCTO 4: guantes_deportivos -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="guantes_deportivos"
+          class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="guayos"
         >
           <div
-            class="bg-white  h-64 flex items-center justify-center relative overflow-hidden"
+            class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="../assets/images/guantes_portero.jpg"
+                src="../assets/images/descarga.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -301,160 +402,53 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-black">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
+            <p class="text-black mb-4">
               Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=guantes_deportivos"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
             </div>
-          </div>
-        </div>
-        <!-- PRODUCTO 3: guantes_deportivos -->
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
+                  href="producto-detalle.html?id=ropa3"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
+                  data-product-id="ropa3"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
         </div>
-
+<!-- PRODUCTO 5: guantes_deportivos -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
+          class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="ropa_deportivo"
         >
           <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
+            class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
+                src="../assets/images/ropa2.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -463,52 +457,53 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-black">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
+            <p class="text-black mb-4">
               Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
+            </div>
+
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
+                  href="producto-detalle.html?id=ropa3"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
+                  data-product-id="ropa3"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
         </div>
-
+<!-- PRODUCTO 6: guantes_deportivos -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
+          class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="balon"
         >
           <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
+            class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
+                src="../assets/images/balon.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -517,52 +512,53 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+           <h3 class="font-bold text-xl mb-2 text-black">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
+            <p class="text-black mb-4">
               Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
+            </div>
+
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
+                  href="producto-detalle.html?id=ropa3"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
+                  data-product-id="ropa3"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
         </div>
-
+<!-- PRODUCTO 7: guantes_deportivos -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
+          class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-product-id="guantes"
         >
           <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
+            class="bg-white h-64 flex items-center justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
+                src="../assets/images/guantes.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -571,52 +567,59 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-black">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
+            <p class="text-black mb-4">
               Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
+            </div>
+
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
+                  href="producto-detalle.html?id=ropa3"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
+                  data-product-id="ropa3"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
         </div>
-
+<!-- PRODUCTO 8: guantes_deportivos -->
         <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
+          class="border rounded-2xl break-words overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+
+
+
+
+
+          
+          data-product-id="ropa3"
         >
           <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
+            class="bg-white flex items-center h-64 justify-center relative overflow-hidden"
           >
             <span
               ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
+                src="../assets/images/ropa3.jpg"
                 alt="Producto"
             /></span>
             <div
@@ -625,256 +628,44 @@ laptops, celulares y componentes PC"
               -15%
             </div>
           </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
+          <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
+            <h3 class="font-bold text-xl mb-2 text-black">
               Conjunto Deportivo
             </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
+            <p class="text-black mb-4 line-clamp-3">
+              Ideal para entrenamientos en gimnasio. asoidhoiashdioasiodsaihdoihasoidhasoihda
+              asoidhoiashdioasiodsaihdoihasoidhasoihdahoaishdias
+              asoidhoiashdioasiodsaihdoihasoidhasoihda
+              asoidhoiashdioasiodsaihdoihasoidhasoihda
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
+              <span class="text-gray-500 text-sm ml-2">(128 reseñas)</span>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
               <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
+                <span class="text-gray-500 line-through text-sm">$2,899</span>
+                <span class="text-3xl font-bold text-green-600 ml-2"
                   >$2,499</span
                 >
               </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
             </div>
-          </div>
-        </div>
 
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
+              <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
+                  href="producto-detalle.html?id=ropa3"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
                   class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
+                  data-product-id="ropa3"
                 >
                   Comprar
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="border rounded-2xl border-blue-600 overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
-          data-product-id="conjunto_deportivo"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-900 to-gray-600 h-64 flex items-center justify-center relative overflow-hidden"
-          >
-            <span
-              ><img
-                src="https://i.pinimg.com/736x/dd/ec/af/ddecaf8d322ed7532cdd9af90146cc6b.jpg"
-                alt="Producto"
-            /></span>
-            <div
-              class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold"
-            >
-              -15%
-            </div>
-          </div>
-          <div class="p-6 bg-black">
-            <h3 class="font-bold text-xl mb-2 text-white">
-              Conjunto Deportivo
-            </h3>
-            <p class="text-white mb-4">
-              Ideal para entrenamientos en gimnasio.
-            </p>
-            <div class="flex items-center mb-4">
-              <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
-              <span class="text-gray-300 text-sm ml-2">(128 reseñas)</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <div>
-                <span class="text-gray-400 line-through text-sm">$2,899</span>
-                <span class="text-3xl font-bold text-blue-600 ml-2"
-                  >$2,499</span
-                >
-              </div>
-              <div class="flex space-x-2">
-                <a
-                  href="producto-detalle.html?id=conjunto_deportivo"
-                  class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
-                >
-                  Ver Detalles
-                </a>
-                <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="conjunto_deportivo"
-                >
-                  Comprar
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <!-- ✅ ESTE CIERRE ES LO QUE FALTABA -->
@@ -883,31 +674,31 @@ laptops, celulares y componentes PC"
       <div class="mt-12 flex justify-center">
         <nav class="flex gap-2">
           <button
-            class="px-4 py-2 bg-white border border-black rounded-lg text-gray-500 hover:bg-green-500 transition"
+            class="px-4 py-2 bg-white border border-gray-500 rounded-lg text-black hover:bg-green-500 transition"
           >
             Anterior
           </button>
 
           <button
-            class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition"
+            class="px-4 py-2 bg-white border border-gray-500 rounded-lg text-black hover:bg-green-500 transition"
           >
             1
           </button>
 
           <button
-            class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition"
+            class="px-4 py-2 bg-white border border-gray-500 rounded-lg text-black hover:bg-green-500 transition"
           >
             2
           </button>
 
           <button
-            class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition"
+            class="px-4 py-2 bg-white border border-gray-500 rounded-lg text-black hover:bg-green-500 transition"
           >
             3
           </button>
 
           <button
-            class="px-4 py-2 bg-white border border-black rounded-lg text-black hover:bg-green-500 transition"
+            class="px-4 py-2 bg-white border border-gray-500 rounded-lg text-black hover:bg-green-500 transition"
           >
             Siguiente
           </button>

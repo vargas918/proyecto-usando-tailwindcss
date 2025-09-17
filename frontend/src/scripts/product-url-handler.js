@@ -41,7 +41,7 @@ function loadProductData(productId) {
             },
             category: 'laptops'
         },
-        'iphone-15-pro': {
+        'guantes_deportivos': {
             name: 'iPhone 15 Pro',
             shortDesc: '128GB, Titanio Natural',
             price: '$4.800.000',
@@ -57,7 +57,7 @@ function loadProductData(productId) {
             },
             category: 'celulares'
         },
-        'nvidia-rtx-4080': {
+        'voleibol': {
             name: 'NVIDIA RTX 4080',
             shortDesc: '16GB GDDR6X, Gaming OC',
             price: '$3.200.000',
@@ -73,7 +73,7 @@ function loadProductData(productId) {
             },
             category: 'componentes'
         },
-        'samsung-galaxy-s24': {
+        'guayos': {
             name: 'Samsung Galaxy S24',
             shortDesc: '256GB, Phantom Black',
             price: '$2.400.000',
@@ -89,7 +89,7 @@ function loadProductData(productId) {
             },
             category: 'celulares'
         },
-        'dell-xps-13': {
+        'ropa_deportivo': {
             name: 'Dell XPS 13',
             shortDesc: 'Intel i7, 16GB RAM, 512GB SSD',
             price: '$3.500.000',
@@ -105,7 +105,7 @@ function loadProductData(productId) {
             },
             category: 'laptops'
         },
-        'amd-ryzen-7': {
+        'balon': {
             name: 'AMD Ryzen 7 7800X3D',
             shortDesc: '8-Core, 4.2GHz, AM5',
             price: '$1.100.000',
@@ -121,7 +121,7 @@ function loadProductData(productId) {
             },
             category: 'componentes'
         },
-        'airpods-pro': {
+        'guantes': {
             name: 'AirPods Pro (2ª Gen)',
             shortDesc: 'Cancelación activa de ruido',
             price: '$750.000',
@@ -137,7 +137,7 @@ function loadProductData(productId) {
             },
             category: 'accesorios'
         },
-        'silla-gaming': {
+        'ropa3': {
             name: 'Silla Gaming Pro',
             shortDesc: 'Ergonómica, LED RGB',
             price: '$890.000',
