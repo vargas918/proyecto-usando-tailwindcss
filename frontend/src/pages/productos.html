@@ -55,20 +55,7 @@ laptops, celulares y componentes PC"
               href="carrito.html"
               class="relative text-white hover:text-green-400"
             >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13l-1.1 5m0
-0h3.1M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z"
-                ></path>
-              </svg>
+              🛒
 
               <span
                 class="absolute -top-2 -right-2 bg-orange-500 text- white text-xs rounded-full px-1"
@@ -125,7 +112,7 @@ laptops, celulares y componentes PC"
     <main class="max-w-7xl mx-auto px-4 py-8">
       <!-- Breadcrumbs y Título -->
       <div class="mb-8">
-        <nav class="text-sm text-gray-600 mb-4 border-b border-gray-300 pb-2">
+        <nav class="text-sm text-gray-600 mb-4 border-b border-black  pb-2">
           <a
             href="index.html"
             class="hover:text-green-600 transition-colors duration-200"
@@ -230,7 +217,9 @@ laptops, celulares y componentes PC"
       >
         <!-- PRODUCTO 1: Conjunto Deportivo -->
         <div
-  class="border rounded-2xl overflow-hidden shadow-lg shadow-gray-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
+  class="border rounded-2xl overflow-hidden shadow-lg shadow-gray-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card" 
+  data-category="laptops" 
+  data-price="6200000"
   data-product-id="zapatos_deportivos"
 >
   <div
@@ -250,7 +239,7 @@ laptops, celulares y componentes PC"
   </div>
 
   <div class="p-6 bg-gradient-to-b from-orange-100 to-white">
-    <h3 class="font-bold text-xl mb-2 text-black">Conjunto Deportivo</h3>
+    <h3 class="font-bold text-xl mb-2 text-black">TechLoom Zipline</h3>
     <p class="text-black mb-4">Ideal para entrenamientos en gimnasio.</p>
 
     <div class="flex items-center mb-4">
@@ -274,10 +263,10 @@ laptops, celulares y componentes PC"
         Ver Detalles
       </a>
       <button
-        class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 text-sm"
+        class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 text-sm"
         data-product-id="zapatos_deportivos"
       >
-        Comprar
+        Al carrito  
       </button>
     </div>
   </div>
@@ -285,6 +274,8 @@ laptops, celulares y componentes PC"
 
         <!-- PRODUCTO 2: guantes_deportivos -->
         <div class="border rounded-2xl  overflow-hidden shadow-lg shadow-gray-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card"
+        data-category="celulares" 
+        data-price="4800000"
           data-product-id="guantes_deportivos">
           <div class="bg-white  h-64 flex items-center justify-center relative overflow-hidden">
             <span><img src="../assets/images/guantes_portero.jpg" class="w-full h-full object-contain" alt="Producto" /></span>
@@ -321,10 +312,10 @@ laptops, celulares y componentes PC"
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300  text-sm"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300  text-sm"
                   data-product-id="guantes_deportivos"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -332,6 +323,8 @@ laptops, celulares y componentes PC"
         <!-- PRODUCTO 3: guantes_deportivos -->
         <div
           class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-category="componentes" 
+          data-price="3200000"
           data-product-id="voleibol"
         >
           <div
@@ -375,10 +368,10 @@ laptops, celulares y componentes PC"
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
                   data-product-id="voleibol"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -386,6 +379,8 @@ laptops, celulares y componentes PC"
 <!-- PRODUCTO 4: guantes_deportivos -->
         <div
           class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-category="celulares" 
+          data-price="2400000"
           data-product-id="guayos"
         >
           <div
@@ -424,16 +419,16 @@ laptops, celulares y componentes PC"
 
               <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=ropa3"
+                  href="producto-detalle.html?id=guayos"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="ropa3"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
+                  data-product-id="guayos"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -441,6 +436,8 @@ laptops, celulares y componentes PC"
 <!-- PRODUCTO 5: guantes_deportivos -->
         <div
           class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-category="laptops" 
+          data-price="3500000"
           data-product-id="ropa_deportivo"
         >
           <div
@@ -479,16 +476,16 @@ laptops, celulares y componentes PC"
 
               <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=ropa3"
+                  href="producto-detalle.html?id=ropa_deportivo"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="ropa3"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
+                  data-product-id="ropa_deportivo"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -496,6 +493,8 @@ laptops, celulares y componentes PC"
 <!-- PRODUCTO 6: guantes_deportivos -->
         <div
           class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-category="componentes" 
+          data-price="1100000"
           data-product-id="balon"
         >
           <div
@@ -534,16 +533,16 @@ laptops, celulares y componentes PC"
 
               <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=ropa3"
+                  href="producto-detalle.html?id=balon"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="ropa3"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
+                  data-product-id="balon"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -551,6 +550,8 @@ laptops, celulares y componentes PC"
 <!-- PRODUCTO 7: guantes_deportivos -->
         <div
           class="border rounded-2xl  overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
+          data-category="accesorios" 
+          data-price="750000"
           data-product-id="guantes"
         >
           <div
@@ -589,16 +590,16 @@ laptops, celulares y componentes PC"
 
               <div class="grid grid-cols-2 gap-3">
                 <a
-                  href="producto-detalle.html?id=ropa3"
+                  href="producto-detalle.html?id=guantes"
                   class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-1 text-sm text-center"
                 >
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
-                  data-product-id="ropa3"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
+                  data-product-id="guantes"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -606,12 +607,8 @@ laptops, celulares y componentes PC"
 <!-- PRODUCTO 8: guantes_deportivos -->
         <div
           class="border rounded-2xl break-words overflow-hidden shadow-lg hover:shadow-2xl shadow-gray-500 transition duration-300 transform hover:-translate-y-1 product-card"
-
-
-
-
-
-          
+          data-category="accesorios" 
+          data-price="890000"
           data-product-id="ropa3"
         >
           <div
@@ -659,10 +656,10 @@ laptops, celulares y componentes PC"
                   Ver Detalles
                 </a>
                 <button
-                  class="agregar-carrito-btn bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex-1 text-sm"
+                  class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm "
                   data-product-id="ropa3"
                 >
-                  Comprar
+                  Al carrito  
                 </button>
               </div>
             </div>
@@ -811,8 +808,51 @@ laptops, celulares y componentes PC"
       </div>
     </footer>
     <!-- SCRIPTS - Orden importante -->
-<script src="../scripts/main.js"></script>
-<script src="../scripts/productos-navegacion.js"></script>
-<script src="../scripts/productos.js"></script>
+<!-- SCRIPTS v2.0 - SIN CONFLICTOS -->
+<script src="../scripts/carrito.js"></script>
+<script src="../scripts/producto-navegacion.js"></script>
+<script src="../scripts/productos-filtros-v2.js"></script>
+<script src="../scripts/product-url-handler.js"></script>
+
+<!-- Botones de producto - SIMPLIFICADO -->
+<script>
+    setTimeout(function() {
+        // Botones "Comprar" 
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const product = {
+                    id: this.dataset.id,
+                    name: this.dataset.product,
+                    price: parseInt(this.dataset.price),
+                    quantity: 1,
+                    image: this.closest('.product-card').querySelector('img')?.src || '📦'
+                };
+                
+                // Efecto visual
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Agregar al carrito
+                if (window.addToCart) {
+                    window.addToCart(product);
+                }
+            });
+        });
+        
+        // Botones "Ver Detalles"
+        document.querySelectorAll('.ver-detalles-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                window.location.href = `producto-detalle.html?id=${productId}`;
+            });
+        });
+        
+        console.log('✅ Botones inicializados v2.0');
+    }, 1500);
+</script>
   </body>
 </html>

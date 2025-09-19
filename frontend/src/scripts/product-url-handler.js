@@ -26,17 +26,17 @@ function loadProductData(productId) {
     
     const products = {
         'zapatos_deportivos': {
-            name: 'MacBook Pro 16" M3',
+            name: 'zapatos negros',
             shortDesc: 'Chip M3, 16GB RAM, 512GB SSD',
             price: '$6.200.000',
             originalPrice: '$12.500.000',
             images: {
-                main: 'https://static.dafiti.com.co/p/adidas-performance-5578-2803572-6-cart.jpg',
+                main: 'https://www.athleticpropulsionlabs.com/cdn/shop/files/h23-techloomzipline-black-black-black-2.jpg?format=webp&v=1698869881&width=1200',
                 gallery: [
-                    'https://www.infinity-connection.com/wp-content/uploads/2023/03/4.jpg',
-                    'https://www.bloomtech.com.co/wp-content/uploads/2024/05/MACBOOK-PRO-M3-14-1.png.webp',
-                    'https://www.istudiobyspvi.com/cdn/shop/files/MacBook_Pro_16_in_M3_Pro_Max_Space_Black_PDP_Image_Position-2__GBEN_07ef3942-4ced-4dca-b2c4-e38fb6c7e328.jpg?v=1718121676&width=823',
-                    'https://co.tiendasishop.com/cdn/shop/files/IMG-11197330_66c93688-a0b7-4c0c-8289-3a8b4e5f56a0.jpg?v=1723512407&width=823'
+                    'https://www.athleticpropulsionlabs.com/cdn/shop/files/h23-techloomzipline-black-black-black-3.jpg?format=webp&v=1698869881&width=1200',
+                    'https://www.athleticpropulsionlabs.com/cdn/shop/files/h23-techloomzipline-black-black-black-2.jpg?format=webp&v=1698869881&width=1200',
+                    'https://www.athleticpropulsionlabs.com/cdn/shop/files/h23-techloomzipline-black-black-black-4.jpg?format=webp&v=1698869881&width=1200',
+                    'https://www.athleticpropulsionlabs.com/cdn/shop/files/h23-techloomzipline-black-black-black-5.jpg?format=webp&v=1698869882&width=1200'
                 ]
             },
             category: 'laptops'

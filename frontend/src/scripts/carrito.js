@@ -10,7 +10,7 @@ console.log('carrito.js cargando...');
 
 const CART_CONFIG = {
     storage: {
-        cartKey: 'ecommerce-cart-data' // Cambia por tu marca
+        cartKey: 'cart' // Cambia por tu marca
     },
     shipping: {
         freeThreshold: 100000, // $100.000 envío gratis - PERSONALIZA
@@ -104,7 +104,7 @@ window.addToCart = function(product) {
             id: product.id,
             name: product.name,
             price: product.price,
-            image: product.image || 'https://via.placeholder.com/100x100',
+            images: product.image || 'https://via.placeholder.com/100x100',
             quantity: 1
         });
         showNotification(`${product.name} agregado al carrito`);
