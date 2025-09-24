@@ -265,6 +265,8 @@ laptops, celulares y componentes PC"
       <button
         class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 text-sm"
         data-product-id="zapatos_deportivos"
+        data-category="laptops" 
+        data-price="6200000"
       >
         Al carrito  
       </button>
@@ -314,6 +316,8 @@ laptops, celulares y componentes PC"
                 <button
                   class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300  text-sm"
                   data-product-id="guantes_deportivos"
+                  data-category="celulares" 
+                  data-price="4800000"
                 >
                   Al carrito  
                 </button>
@@ -370,6 +374,8 @@ laptops, celulares y componentes PC"
                 <button
                   class="add-to-cart-btn bg-orange-400 text-white px-3 py-2 rounded-lg hover:bg-orange-500 transition duration-300 flex-1 text-sm"
                   data-product-id="voleibol"
+                  data-category="componentes" 
+          data-price="3200000"
                 >
                   Al carrito  
                 </button>
@@ -630,10 +636,7 @@ laptops, celulares y componentes PC"
               Conjunto Deportivo
             </h3>
             <p class="text-black mb-4 line-clamp-3">
-              Ideal para entrenamientos en gimnasio. asoidhoiashdioasiodsaihdoihasoidhasoihda
-              asoidhoiashdioasiodsaihdoihasoidhasoihdahoaishdias
-              asoidhoiashdioasiodsaihdoihasoidhasoihda
-              asoidhoiashdioasiodsaihdoihasoidhasoihda
+              Ideal para entrenamientos en gimnasio.
             </p>
             <div class="flex items-center mb-4">
               <div class="flex text-yellow-400">⭐⭐⭐⭐⭐</div>
@@ -811,29 +814,28 @@ laptops, celulares y componentes PC"
 <!-- SCRIPTS v2.0 - SIN CONFLICTOS -->
 <script src="../scripts/carrito.js"></script>
 <script src="../scripts/producto-navegacion.js"></script>
-<script src="../scripts/productos-filtros-v2.js"></script>
 <script src="../scripts/product-url-handler.js"></script>
 
 <!-- Botones de producto - SIMPLIFICADO -->
 <script>
-    setTimeout(function() {
-        // Botones "Comprar" 
+        document.addEventListener('DOMContentLoaded', function() {
+        // Botones "Comprar" - Usar misma lógica que index.html
         document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const product = {
-                    id: this.dataset.id,
-                    name: this.dataset.product,
-                    price: parseInt(this.dataset.price),
-                    quantity: 1,
-                    image: this.closest('.product-card').querySelector('img')?.src || '📦'
-                };
+        button.addEventListener('click', function() {
+            const product = {
+                id: this.dataset.id,
+                name: this.dataset.product,
+                price: parseInt(this.dataset.price),
+                image: this.dataset.image || this.closest('.product-card').querySelector('img')?.src || '📦'
+            };
                 
                 // Efecto visual
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    this.style.transform = 'scale(1)';
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
                 }, 150);
                 
                 // Agregar al carrito
@@ -850,9 +852,7 @@ laptops, celulares y componentes PC"
                 window.location.href = `producto-detalle.html?id=${productId}`;
             });
         });
-        
-        console.log('✅ Botones inicializados v2.0');
-    }, 1500);
-</script>
+    });
+    </script>
   </body>
 </html>

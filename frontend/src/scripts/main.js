@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const cartCounter = document.getElementById('cart-counter');
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn'); 
     
     // FUNCIÓN 1: MENÚ MÓVIL
     function toggleMobileMenu() {

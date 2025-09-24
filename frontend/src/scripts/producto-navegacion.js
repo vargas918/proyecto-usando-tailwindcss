@@ -44,7 +44,7 @@ function initProductDetailButtons() {
  * Inicializar botones "Agregar al Carrito" desde catálogo
  */
 function initCatalogCartButtons() {
-    const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const cartButtons = document.querySelectorAll('.agregar-carrito-btn');
     
     if (cartButtons.length === 0) {
         console.warn('⚠️ No se encontraron botones "Agregar al Carrito"');
@@ -92,7 +92,7 @@ function navigateToProductDetail(productId) {
  */
 function getProductDataFromDOM(productId) {
     // Encontrar la card del producto
-    const productCard = document.querySelector(`[data-id="${productId}"]`);
+    const productCard = document.querySelector(`[data-product-id="${productId}"]`);
     
     if (!productCard) {
         console.error(`❌ No se encontró producto con ID: ${productId}`);
@@ -229,7 +229,7 @@ function debugProducts() {
     console.log('🛍️ Productos encontrados:', products.length);
     
     products.forEach((product, index) => {
-        const id = product.getAttribute('data-id');
+        const id = product.getAttribute('data-product-id');
         const name = product.querySelector('h3')?.textContent || 'Sin nombre';
         console.log(`${index + 1}. ID: ${id} - Nombre: ${name}`);
     });
@@ -241,83 +241,3 @@ function debugProducts() {
 window.debugProducts = debugProducts;
 
 console.log('📜 Archivo productos-navegacion.js cargado completamente');
-/**
- * Inicializar filtros, búsqueda y ordenamiento
- */
-function initProductFilters() {
-    const searchInput = document.querySelector('input[placeholder="Buscar productos..."]');
-    const categoryFilter = document.getElementById('category-filter');
-    const priceFilter = document.getElementById('price-filter');
-    const sortFilter = document.getElementById('sort-filter');
-    const productsGrid = document.getElementById('products-grid');
-    const products = Array.from(productsGrid.querySelectorAll('.product-card'));
-
-    if (!productsGrid || products.length === 0) return;
-    const originalOrder = products.slice(); // Guarda el orden inicial del grid
-    console.log(`✅ ${products.length} productos encontrados para filtrar`);
-
-    function filterAndSortProducts() {
-        const query = searchInput.value.toLowerCase().trim();
-        const selectedCategory = categoryFilter.value;
-        const selectedPrice = priceFilter.value;
-        const sortOption = sortFilter.value;
-
-        let filtered = products.filter(product => {
-            const title = product.querySelector('h3')?.textContent.toLowerCase() || '';
-            const description = product.querySelector('p')?.textContent.toLowerCase() || '';
-            const category = product.dataset.category;
-            const price = parseInt(product.dataset.price);
-
-            // Filtrado por búsqueda
-            const matchesSearch = title.includes(query) || description.includes(query);
-            
-            // Filtrado por categoría
-            const matchesCategory = !selectedCategory || category === selectedCategory;
-
-            // Filtrado por precio
-            let matchesPrice = true;
-            if (selectedPrice) {
-                if (selectedPrice.includes('+')) {
-                    matchesPrice = price >= parseInt(selectedPrice);
-                } else {
-                    const [min, max] = selectedPrice.split('-').map(Number);
-                    matchesPrice = price >= min && price <= max;
-                }
-            }
-
-            return matchesSearch && matchesCategory && matchesPrice;
-        });
-
-        // Ordenamiento
-        if (sortOption === 'relevance') {
-            filtered = originalOrder.filter(p => filtered.includes(p));
-        }else if (sortOption === 'price-asc') {
-            filtered.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
-        } else if (sortOption === 'price-desc') {
-            filtered.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
-        } else if (sortOption === 'name') {
-            filtered.sort((a, b) => a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent));
-        } else if (sortOption === 'newest') {
-            // Asumiendo que los productos más nuevos están al final del grid
-            filtered.sort((a, b) => parseInt(b.dataset.id.split('-').pop()) - parseInt(a.dataset.id.split('-').pop()));
-        }
-
-        // Mostrar/Ocultar productos
-        products.forEach(p => (p.style.display = 'none'));
-        filtered.forEach(p => {
-            p.style.display = 'block';
-            productsGrid.appendChild(p);
-            });
-    }
-
-    // Eventos de filtros
-    searchInput.addEventListener('input', filterAndSortProducts);
-    categoryFilter.addEventListener('change', filterAndSortProducts);
-    priceFilter.addEventListener('change', filterAndSortProducts);
-    sortFilter.addEventListener('change', filterAndSortProducts);
-}
-
-// Inicializar filtros al cargar DOM
-document.addEventListener('DOMContentLoaded', function() {
-    initProductFilters();
-});
