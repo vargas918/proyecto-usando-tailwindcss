@@ -1,0 +1,4 @@
+usuario = jhoanvargas4848_db_user
+
+
+Contraseña = 2Ch261cHRm19HCbs
