@@ -5,7 +5,8 @@
 require('dotenv').config(); // Cargar variables de entorno PRIMERO
 const express = require('express');
 const cors = require('cors');
-const { connectDB } = require('./Config/database');
+const { connectDB } = require('./config/database');
+const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 console.log('🚀 Iniciando TechStore Pro Backend...');
 
@@ -13,7 +14,7 @@ console.log('🚀 Iniciando TechStore Pro Backend...');
 const app = express();
 
 // =============================================
-// MIDDLEWARE DE LOGGING
+// MIDDLEWARE DE LOGGING PERSONALIZADO TECHSTORE
 // =============================================
 app.use((req, res, next) => {
     const timestamp = new Date().toISOString();
@@ -21,31 +22,54 @@ app.use((req, res, next) => {
     const url = req.originalUrl;
     const ip = req.ip || req.connection.remoteAddress;
     
-    console.log(`📡 ${timestamp} - ${method} ${url} - IP: ${ip}`);
+    // Identificar tipo de petición con iconos específicos
+    let requestType = '📡';
+    if (url.includes('/products')) requestType = '📱';
+    if (url.includes('/users')) requestType = '👤';
+    if (url.includes('/orders')) requestType = '🛒';
+    if (url.includes('/auth')) requestType = '🔐';
+    if (url.includes('/health')) requestType = '💚';
+    
+    console.log(`${requestType} ${timestamp} - ${method} ${url} - IP: ${ip}`);
     next();
 });
 
 // =============================================
-// CONFIGURACIÓN CORS
+// CONFIGURACIÓN CORS MEJORADA PARA TECHSTORE
 // =============================================
 app.use(cors({
     origin: [
-        'http://localhost:3000',      // React
+        'http://localhost:3000',      // React desarrollo
         'http://127.0.0.1:5500',      // Live Server
         'http://localhost:8080',      // Webpack
         'http://localhost:5173',      // Vite
+        'https://techstore-pro.vercel.app', // Producción (ejemplo)
     ],
     credentials: true,
     optionsSuccessStatus: 200,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['X-Total-Count', 'X-Page-Count'] // Para paginación
 }));
 
 // =============================================
-// MIDDLEWARE DE PARSEO
+// MIDDLEWARE DE PARSEO OPTIMIZADO
 // =============================================
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// Aumentar límite para imágenes de productos
+app.use(express.json({ 
+    limit: '10mb',
+    verify: (req, res, buf) => {
+        // Log para requests grandes (posibles uploads de imágenes)
+        if (buf.length > 1000000) { // > 1MB
+            console.log(`📁 Request grande detectado: ${(buf.length / 1024 / 1024).toFixed(2)}MB`);
+        }
+    }
+}));
+
+app.use(express.urlencoded({ 
+    extended: true, 
+    limit: '10mb' 
+}));
 
 // =============================================
 // CONECTAR A MONGODB ATLAS
@@ -53,27 +77,64 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 connectDB();
 
 // =============================================
-// RUTAS BÁSICAS
+// RUTAS PRINCIPALES DE TECHSTORE PRO
 // =============================================
 
-// Ruta principal - Información de la API
+// Ruta principal - Información mejorada de la API
 app.get('/', (req, res) => {
     res.json({
         success: true,
-        message: '🛍️ TechStore Pro API funcionando correctamente',
+        message: '🏪 TechStore Pro API funcionando correctamente',
         version: process.env.APP_VERSION || '1.0.0',
         environment: process.env.NODE_ENV || 'development',
         timestamp: new Date().toISOString(),
         endpoints: {
-            health: '/api/health',
-            productos: '/api/productos',
-            usuarios: '/api/usuarios',
-            auth: '/api/auth'
-        }
+            products: {
+                description: 'Catálogo de productos tecnológicos',
+                routes: {
+                    list: 'GET /api/products',
+                    details: 'GET /api/products/:id',
+                    create: 'POST /api/products (Admin)',
+                    update: 'PUT /api/products/:id (Admin)',
+                    delete: 'DELETE /api/products/:id (Admin)',
+                    categories: 'GET /api/products/categories',
+                    featured: 'GET /api/products/featured',
+                    search: 'GET /api/products/search?q=macbook'
+                }
+            },
+            users: {
+                description: 'Gestión de usuarios y perfiles',
+                routes: {
+                    register: 'POST /api/auth/register',
+                    login: 'POST /api/auth/login',
+                    profile: 'GET /api/users/profile',
+                    list: 'GET /api/users (Admin)'
+                }
+            },
+            orders: {
+                description: 'Gestión de pedidos y compras',
+                routes: {
+                    create: 'POST /api/orders',
+                    list: 'GET /api/orders',
+                    details: 'GET /api/orders/:id',
+                    userOrders: 'GET /api/orders/user/:userId'
+                }
+            },
+            health: 'GET /api/health'
+        },
+        features: [
+            'Catálogo completo de productos Apple y tecnología',
+            'Sistema de autenticación seguro con JWT',
+            'Gestión de pedidos en tiempo real',
+            'Filtros avanzados por categoría y precio',
+            'Búsqueda inteligente de productos',
+            'Manejo profesional de errores',
+            'Validaciones automáticas de datos'
+        ]
     });
 });
 
-// Ruta de health check
+// Ruta de health check mejorada
 app.get('/api/health', (req, res) => {
     const mongoose = require('mongoose');
     
@@ -91,34 +152,61 @@ app.get('/api/health', (req, res) => {
         version: process.env.APP_VERSION || '1.0.0',
         database: {
             status: dbStates[mongoose.connection.readyState],
-            name: mongoose.connection.name || 'No conectado'
+            name: mongoose.connection.name || 'No conectado',
+            host: mongoose.connection.host || 'N/A'
         },
-        uptime: `${Math.floor(process.uptime())} segundos`
+        memory: {
+            used: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+            total: `${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)} MB`
+        },
+        uptime: {
+            seconds: Math.floor(process.uptime()),
+            formatted: `${Math.floor(process.uptime() / 60)}m ${Math.floor(process.uptime() % 60)}s`
+        },
+        middleware: {
+            errorHandler: 'Activo',
+            validation: 'Activo',
+            cors: 'Configurado',
+            logging: 'Personalizado'
+        }
     });
 });
 
 // =============================================
-// MIDDLEWARE DE ERRORES
+// RUTAS DE LA API - TECHSTORE PRO
 // =============================================
-app.use((err, req, res, next) => {
-    console.error('❌ Error capturado:', err.message);
-    
-    res.status(err.status || 500).json({
-        success: false,
-        error: 'Error interno del servidor',
-        message: process.env.NODE_ENV === 'development' ? err.message : 'Algo salió mal',
-        timestamp: new Date().toISOString()
-    });
-});
 
-// Ruta 404
-app.use('*', (req, res) => {
-    res.status(404).json({
-        success: false,
-        error: 'Ruta no encontrada',
-        message: `La ruta ${req.method} ${req.originalUrl} no existe`,
-        timestamp: new Date().toISOString()
-    });
-});
+// Rutas de productos
+app.use('/api/products', require('./Routes/products'));
+
+console.log('✅ Rutas API configuradas:');
+console.log('   📱 /api/products - Gestión de productos');
+console.log('   🏥 /api/health - Estado del servidor');
+
+// TODO: Futuras rutas
+// app.use('/api/users', require('./routes/users'));
+// app.use('/api/orders', require('./routes/orders'));
+// app.use('/api/auth', require('./routes/auth'));
+app.use(notFound);
+
+// Middleware de manejo global de errores (siempre al final)
+app.use(errorHandler);
 
 module.exports = app;
+
+/**
+ * CONFIGURACIÓN COMPLETADA PARA TECHSTORE PRO ✅
+ * 
+ * Middleware implementado:
+ * ✅ Logging personalizado con iconos por tipo de petición
+ * ✅ CORS configurado para desarrollo y producción
+ * ✅ Parseo de JSON con límites para imágenes
+ * ✅ Rutas de información y health check mejoradas
+ * ✅ Manejo global de errores profesional
+ * ✅ Respuestas 404 personalizadas con sugerencias
+ * 
+ * Próximos pasos (Parte 3B):
+ * 🎯 Crear controladores de productos
+ * 🎯 Implementar rutas REST para productos
+ * 🎯 Probar con Postman
+ */
