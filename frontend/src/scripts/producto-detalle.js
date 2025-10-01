@@ -147,7 +147,7 @@ function initAddToCartButton() {
         
         // Obtener datos del producto
         const productData = {
-            id: 'macbook-pro-16-m3',
+            id: 'macbok-pro-16-m3',
             name: 'MacBook Pro 16" M3',
             price: 2499,
             quantity: quantity,

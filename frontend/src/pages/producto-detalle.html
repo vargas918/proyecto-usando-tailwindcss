@@ -34,9 +34,7 @@
                 <div class="flex items-center space-x-4">
                     <!-- Carrito -->
                     <a href="carrito.html" class="relative text-white hover:text-green-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13l-1.1 5m0 0h3.1M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z"></path>
-                        </svg>
+                        🛒
                         <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1" id="cart-counter">0</span>
                     </a>
                     
@@ -590,15 +588,80 @@
 
     <!-- SCRIPTS -->
    
-<script src="../scripts/main.js"></script>
-<script src="../scripts/producto-detalle.js"></script>
+<script src="../scripts/carrito.js"></script>
 <script src="../scripts/product-url-handler.js"></script>
 
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para obtener datos del producto desde la URL o DOM
+    function getProductDataFromPage() {
+        // Opción 1: Desde URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        // Opción 2: Desde DOM de la página
+        const productName = document.querySelector('main h1')?.textContent || 'MacBook Pro 16" M3';
+        const priceElement = document.querySelector('.text-4xl.font-bold.text-blue-600');
+        const priceText = priceElement?.textContent.replace(/[^0-9]/g, '') || '2499000';
+        const productPrice = parseInt(priceText);
+        const productImage = document.querySelector('#main-image img')?.src;
+        
+        return {
+            id: productId || 'macbook-pro-16',
+            name: productName,
+            price: productPrice,
+            image: productImage
+        };
+    }
+    
+    // Botón "Agregar al Carrito" 
+    const addCartBtn = document.getElementById('add-to-cart-btn');
+    if (addCartBtn) {
+        addCartBtn.addEventListener('click', function() {
+            const quantity = parseInt(document.getElementById('quantity-input')?.value) || 1;
+            const productData = getProductDataFromPage();
+            
+            const product = {
+                id: productData.id,
+                name: productData.name,
+                price: productData.price,
+                quantity: quantity,
+                image: productData.image,
+            };
+            
+            if (window.addToCart) {
+                window.addToCart(product);
+            }
+        });
+    }
+    
+    // Controles de cantidad (mantener igual)
+    const quantityInput = document.getElementById('quantity-input');
+    const decreaseBtn = document.getElementById('quantity-decrease');
+    const increaseBtn = document.getElementById('quantity-increase');
+    
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value) || 1;
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+    }
+    
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value) || 1;
+            if (value < 10) {
+                quantityInput.value = value + 1;
+            }
+        });
+    }
+});
+</script>
 
     
-    <!-- Script específico para producto-detalle (Manual 1B) -->
-    <!-- <script src="../scripts/producto-detalle.js"></script> -->
+   
 
 </body>
 

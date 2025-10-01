@@ -1,37 +1,140 @@
+<!-- CARRITO.HTML MEJORADO -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras - Tu Marca</title>
+    <title>Carrito de Compras - TechStore Pro</title>
     <link href="../styles/output.css" rel="stylesheet">
+    
+    <!-- CSS ADICIONAL PARA ANIMACIONES -->
+    <style>
+        @keyframes cartBounce {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(2deg); }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .cart-summary {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .quantity-button:hover {
+            transform: scale(1.1);
+        }
+
+        .quantity-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Efecto loading en botones */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Contador de carrito con pulso mejorado */
+        .cart-counter-pulse {
+            animation: cartPulse 2s infinite;
+        }
+
+        @keyframes cartPulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+            50% { 
+                opacity: 0.9; 
+                transform: scale(1.05);
+                box-shadow: 0 0 0 4px rgba(239, 68, 68, 0);
+            }
+        }
+
+        /* Hover mejorado para productos */
+        .product-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body class="bg-gray-50  ">
-    <!-- Header - Compatible con tu main.js -->
-    <header class="bg-black shadow-lg">
+<body class="bg-gray-50">
+    <!-- Header - MEJORADO -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo - PERSONALIZA AQUÍ -->
+                <!-- Logo mejorado -->
                 <div class="flex items-center">
-                    <a href="index.html"><h1 class="text-2xl font-bold  text-green-400">Full<span class="text-orange-500">Sport</span></h1></a>
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-2 rounded-lg mr-3">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">TechStore Pro</h1>
                 </div>
                 
                 <!-- Navigation Desktop -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-white hover:text-green-400 font-medium transition-colors duration-200">Inicio</a>
-                    <a href="productos.html" class="text-white hover:text-green-400 font-medium transition-colors duration-200">Productos</a>
-                    <a href="carrito.html" class="text-green-600 font-semibold">Carrito</a>
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group">
+                        Inicio
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                    </a>
+                    <a href="productos.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group">
+                        Productos
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                    </a>
+                    <a href="carrito.html" class="text-blue-600 font-semibold relative">
+                        Carrito
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600"></span>
+                    </a>
                 </div>
                 
-                <!-- Cart Icon & Mobile Menu Button - TUS IDs ORIGINALES -->
+                <!-- Cart Icon & Mobile Menu Button -->
                 <div class="flex items-center space-x-4">
-                    <a href="carrito.html" class="relative">
-                        🛒
-                        <!-- TU ID ORIGINAL: cart-counter -->
-                        <span id="cart-counter" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    <a href="carrito.html" class="relative group p-2.5 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl transition-all duration-300 transform hover:scale-105">
+                        <svg class="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition-all duration-300 group-hover:rotate-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13l-1.1 5m0 0h1.1m0-5v5m0 0h10m-10 0a2 2 0 104 0m6 0a2 2 0 100 4"/>
+                        </svg>
+                        <span id="cart-counter" class="cart-counter-pulse absolute -top-2 -right-2 bg-gradient-to-r from-red-500 via-pink-500 to-red-600 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1 shadow-lg border-2 border-white" style="display: none;">0</span>
                     </a>
                     
-                    <!-- TU ID ORIGINAL: mobile-menu-button -->
                     <button id="mobile-menu-button" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200">
                         <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -40,12 +143,12 @@
                 </div>
             </div>
             
-            <!-- Mobile Menu - TU ID ORIGINAL -->
+            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200">
                 <div class="flex flex-col space-y-3 pt-4">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Inicio</a>
-                    <a href="productos.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Productos</a>
-                    <a href="carrito.html" class="text-blue-600 font-semibold">Carrito</a>
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">Inicio</a>
+                    <a href="productos.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">Productos</a>
+                    <a href="carrito.html" class="text-blue-600 font-semibold py-2">Carrito</a>
                 </div>
             </div>
         </nav>
@@ -55,30 +158,34 @@
     <main class="max-w-7xl mx-auto px-4 py-8">
         <!-- Page Title -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Carrito de Compras</h1>
-            <nav class="text-sm text-gray-600">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Carrito de Compras</h1>
+            <nav class="text-sm text-gray-600 flex items-center">
                 <a href="index.html" class="hover:text-blue-600 transition-colors duration-200">Inicio</a>
-                <span class="mx-2">></span>
-                <span class="text-gray-900">Carrito</span>
+                <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-900 font-medium">Carrito</span>
             </nav>
         </div>
 
         <!-- Cart Content -->
-        <div class="grid grid-cols-1  gap-8 ">
-            <!-- Cart Items Section -->
-            <div class="lg:col-span-2 ">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart Items Section - CORREGIDO lg:col-span-2 -->
+            <div class="lg:col-span-2">
                 <!-- Empty Cart Message -->
-                <div id="empty-cart" class="bg-white rounded-xl shadow-lg p-8 text-center">
+                <div id="empty-cart" class="bg-white rounded-xl shadow-lg p-8 text-center product-hover">
                     <div class="max-w-md mx-auto">
-                        <div class="mb-6">
-                            <svg class="w-24 h-24 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 7H6l-1-7z"></path>
-                            </svg>
+                        <div class="mb-6 relative">
+                            <div class="w-24 h-24 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
+                                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 7H6l-1-7z"></path>
+                                </svg>
+                            </div>
                         </div>
                         <h2 class="text-2xl font-semibold text-gray-900 mb-4">Tu carrito está vacío</h2>
-                        <p class="text-gray-600 mb-6">No has agregado ningún producto a tu carrito de compras</p>
+                        <p class="text-gray-600 mb-6">¡Descubre nuestros productos increíbles y encuentra lo que necesitas!</p>
                         <div class="space-y-3">
-                            <a href="productos.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 w-full inline-block text-center">
+                            <a href="productos.html" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 w-full inline-block text-center transform hover:scale-105">
                                 Explorar Productos
                             </a>
                             <a href="index.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-all duration-200 w-full inline-block text-center">
@@ -90,84 +197,165 @@
 
                 <!-- Cart Items Container -->
                 <div id="cart-items-container" class="hidden space-y-4">
-                    <!-- Cart items will be dynamically inserted here -->
+                    <!-- Los productos del carrito aparecerán aquí dinámicamente -->
                 </div>
 
                 <!-- Continue Shopping Button -->
                 <div id="continue-shopping" class="hidden mt-6">
-                    <a href="productos.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                    <a href="productos.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors duration-200 font-medium">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
                         Continuar Comprando
                     </a>
                 </div>
+
+                <!-- Promociones adicionales cuando hay productos -->
+                <div id="cart-promotions" class="hidden mt-8 bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 0v1.5m0 0h4.5V6a2 2 0 10-2 0v1.5M9 9v12"></path>
+                        </svg>
+                        <h3 class="text-lg font-semibold text-green-800">¡Ofertas especiales!</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-center text-green-700">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Envío gratis en compras +$100,000
+                        </div>
+                        <div class="flex items-center text-green-700">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            15% OFF con código BIENVENIDO
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Cart Summary Section -->
+            <!-- Cart Summary Section - MEJORADA -->
             <div class="lg:col-span-1">
-                <div id="cart-summary" class="hidden bg-white rounded-xl shadow-lg p-6 sticky top-8">
-                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Resumen del Pedido</h2>
+                <div id="cart-summary" class="hidden bg-white rounded-xl shadow-lg p-6 sticky top-24 cart-summary">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-900">Resumen del Pedido</h2>
+                    </div>
                     
                     <div class="space-y-4 mb-6">
                         <div class="flex justify-between text-gray-600">
                             <span>Subtotal (<span id="summary-items-count">0</span> productos)</span>
-                            <span id="summary-subtotal">$0</span>
+                            <span id="summary-subtotal" class="font-semibold">$0</span>
                         </div>
                         <div class="flex justify-between text-gray-600">
-                            <span>Envío</span>
-                            <span id="summary-shipping">$0</span>
+                            <span class="flex items-center">
+                                Envío
+                                <svg class="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </span>
+                            <span id="summary-shipping" class="font-semibold">$0</span>
                         </div>
                         <div class="flex justify-between text-gray-600">
-                            <span>Impuestos</span>
-                            <span id="summary-taxes">$0</span>
+                            <span>Impuestos (19%)</span>
+                            <span id="summary-taxes" class="font-semibold">$0</span>
+                        </div>
+                        <div id="discount-row" class="hidden flex justify-between text-green-600">
+                            <span>Descuento</span>
+                            <span id="summary-discount" class="font-semibold">-$0</span>
                         </div>
                         <hr class="border-gray-200">
-                        <div class="flex justify-between text-lg font-semibold text-gray-900">
+                        <div class="flex justify-between text-xl font-bold text-gray-900">
                             <span>Total</span>
                             <span id="summary-total">$0</span>
                         </div>
                     </div>
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Código de descuento</label>
+                    <!-- Códigos de descuento mejorados -->
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                        <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                            </svg>
+                            Código de descuento
+                        </label>
                         <div class="flex">
-                            <input id="promo-code" type="text" placeholder="Ingresa tu código" class="w-full px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button id="apply-promo" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-r-lg transition-all duration-200">
+                            <input id="promo-code" type="text" placeholder="Ej: DESCUENTO10" class="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <button id="apply-promo" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-r-lg transition-all duration-200 flex items-center">
                                 Aplicar
                             </button>
                         </div>
                         <p id="promo-message" class="text-sm mt-2 hidden"></p>
+                        
+                        <!-- Códigos disponibles -->
+                        <div class="mt-3 text-xs text-gray-500">
+                            <details class="cursor-pointer">
+                                <summary class="hover:text-gray-700">Ver códigos disponibles</summary>
+                                <div class="mt-2 space-y-1">
+                                    <div>• DESCUENTO10 - 10% OFF (mín. $50,000)</div>
+                                    <div>• ENVIOGRATIS - Envío gratis (mín. $30,000)</div>
+                                    <div>• BIENVENIDO - 15% OFF (mín. $80,000)</div>
+                                </div>
+                            </details>
+                        </div>
                     </div>
 
-                    <button id="checkout-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 w-full mb-4">
+                    <!-- Botón checkout mejorado -->
+                    <button id="checkout-btn" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-full mb-4 flex items-center justify-center transform hover:scale-105">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                        </svg>
                         Proceder al Checkout
                     </button>
 
-                    <div class="flex items-center justify-center text-gray-500 text-sm">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
-                        Compra 100% segura
+                    <!-- Garantías y seguridad -->
+                    <div class="space-y-3 text-sm text-gray-500">
+                        <div class="flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            Compra 100% segura
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Garantía de satisfacción
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            Soporte 24/7
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-12 mt-16">
+    <!-- Footer mejorado -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">FullSport</h3>
-                    <p class="text-gray-400 mb-4">Activa Sport es un pequeño negocio dedicado a promover la vida saludable a través de la venta de productos deportivos y clases de entrenamiento personalizadas. Nuestro objetivo es acercar el deporte a la comunidad de forma accesible y amigable.</p>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">TechStore Pro</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Tu tienda de tecnología de confianza con los mejores productos y precios.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Enlaces</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="index.html" class="hover:text-white transition-colors duration-200">Inicio</a></li>
                         <li><a href="productos.html" class="hover:text-white transition-colors duration-200">Productos</a></li>
+                        <li><a href="carrito.html" class="hover:text-white transition-colors duration-200">Carrito</a></li>
                     </ul>
                 </div>
                 <div>
@@ -175,6 +363,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Contacto</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Envíos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Devoluciones</a></li>
                     </ul>
                 </div>
                 <div>
@@ -182,18 +371,47 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Términos</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Cookies</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Tu Marca. Todos los derechos reservados.</p>
+                <p>&copy; 2025 TechStore Pro. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts - Orden importante -->
-    <script src="../scripts/carrito.js" async></script>
-    <script src="../scripts/main.js" async></script>
+    <!-- Scripts -->
+    <script src="../scripts/carrito.js"></script>
+    <script src="../scripts/main.js"></script>
+
+    <!-- Script adicional para mejorar UX -->
+    <script>
+        // Mejorar experiencia de usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar promociones cuando hay productos
+            function togglePromotions() {
+                const cartItems = JSON.parse(localStorage.getItem('ecommerce-cart-data') || '[]');
+                const promotions = document.getElementById('cart-promotions');
+                
+                if (cartItems.length > 0 && promotions) {
+                    promotions.classList.remove('hidden');
+                } else if (promotions) {
+                    promotions.classList.add('hidden');
+                }
+            }
+
+            // Ejecutar al cargar y cuando cambie el carrito
+            togglePromotions();
+            
+            // Observer para cambios en el carrito
+            const observer = new MutationObserver(togglePromotions);
+            const cartContainer = document.getElementById('cart-items-container');
+            if (cartContainer) {
+                observer.observe(cartContainer, { childList: true, subtree: true });
+            }
+        });
+    </script>
 </body>
 </html>
