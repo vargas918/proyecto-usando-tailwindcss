@@ -8,12 +8,49 @@ const cors = require('cors');
 const { connectDB } = require('./config/database');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 const { generalLimiter } = require('./middleware/rateLimiter'); // ✨ NUEVO
+const mongoSanitize = require('express-mongo-sanitize');  // ✨ NUEVO
+const xss = require('xss-clean');  // ✨ NUEVO
+const helmet = require('helmet');  // ✨ NUEVO
+const logger = require('./Config/logger');  // ✨ NUEVO
 
 
-console.log('🚀 Iniciando TechStore Pro Backend...');
+logger.info('🚀 Iniciando TechStore Pro Backend...');
 
 // Crear aplicación Express
 const app = express();
+
+// =============================================
+// HELMET - HEADERS DE SEGURIDAD
+// =============================================
+// Aplicar Helmet PRIMERO (antes de otros middlewares)
+app.use(helmet({
+    // Content Security Policy - Protección XSS moderna
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'"],
+            imgSrc: ["'self'", 'data:', 'https:'],
+            connectSrc: ["'self'"],
+            fontSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            mediaSrc: ["'self'"],
+            frameSrc: ["'none'"]
+        }
+    },
+    // Forzar HTTPS en producción
+    hsts: {
+        maxAge: 31536000, // 1 año
+        includeSubDomains: true,
+        preload: true
+    }
+}));
+
+logger.info('🛡️  Helmet activado - Headers de seguridad configurados');
+console.log('   ✅ Content Security Policy (CSP)');
+console.log('   ✅ X-Frame-Options: DENY');
+console.log('   ✅ X-Content-Type-Options: nosniff');
+console.log('   ✅ Strict-Transport-Security (HSTS)');
 
 // =============================================
 // MIDDLEWARE DE LOGGING PERSONALIZADO TECHSTORE
@@ -35,6 +72,10 @@ app.use((req, res, next) => {
     console.log(`${requestType} ${timestamp} - ${method} ${url} - IP: ${ip}`);
     next();
 });
+// ✨ NUEVO: Morgan para HTTP logs
+const morganMiddleware = require('./Config/morganConfig');
+app.use(morganMiddleware);
+logger.info('📊 Morgan HTTP logging activado');
 // =============================================
 // RATE LIMITING - PROTECCIÓN CONTRA ABUSO
 // =============================================
@@ -44,20 +85,62 @@ console.log('🛡️  Rate Limiting activado: 100 peticiones/15min por IP');
 // =============================================
 // CONFIGURACIÓN CORS MEJORADA PARA TECHSTORE
 // =============================================
-app.use(cors({
-    origin: [
+// =============================================
+// CORS AVANZADO POR ENTORNO
+// =============================================
+
+const allowedOrigins = process.env.NODE_ENV === 'production'
+    ? [
+        'https://techstore-pro.vercel.app',
+        'https://www.techstore-pro.com',
+        process.env.FRONTEND_URL
+    ].filter(Boolean) // Eliminar undefined
+    : [
         'http://localhost:3000',      // React desarrollo
         'http://127.0.0.1:5500',      // Live Server
         'http://localhost:8080',      // Webpack
         'http://localhost:5173',      // Vite
-        'https://techstore-pro.vercel.app', // Producción (ejemplo)
-    ],
+        'http://localhost:4200'       // Angular
+    ];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Permitir requests sin origin (Postman, apps móviles)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = `CORS: Origen ${origin} no permitido`;
+            console.log(`⛔ ${msg}`);
+            return callback(new Error(msg), false);
+        }
+        
+        console.log(`✅ CORS: Origen permitido - ${origin}`);
+        return callback(null, true);
+    },
     credentials: true,
     optionsSuccessStatus: 200,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    exposedHeaders: ['X-Total-Count', 'X-Page-Count'] // Para paginación
+    allowedHeaders: [
+        'Content-Type', 
+        'Authorization',
+        'X-Requested-With',
+        'Accept'
+    ],
+    exposedHeaders: [
+        'X-Total-Count', 
+        'X-Page-Count',
+        'RateLimit-Limit',
+        'RateLimit-Remaining',
+        'RateLimit-Reset'
+    ],
+    maxAge: 86400 // Cache preflight por 24 horas
 }));
+
+logger.info('✅ CORS configurado', { 
+    environment: process.env.NODE_ENV || 'development',
+    originsCount: allowedOrigins.length 
+});
+console.log(`   📍 Orígenes permitidos: ${allowedOrigins.length}`);
 
 // =============================================
 // MIDDLEWARE DE PARSEO OPTIMIZADO
@@ -66,8 +149,7 @@ app.use(cors({
 app.use(express.json({ 
     limit: '10mb',
     verify: (req, res, buf) => {
-        // Log para requests grandes (posibles uploads de imágenes)
-        if (buf.length > 1000000) { // > 1MB
+        if (buf.length > 1000000) {
             console.log(`📁 Request grande detectado: ${(buf.length / 1024 / 1024).toFixed(2)}MB`);
         }
     }
@@ -77,6 +159,23 @@ app.use(express.urlencoded({
     extended: true, 
     limit: '10mb' 
 }));
+
+// =============================================
+// SANITIZACIÓN DE DATOS - SEGURIDAD
+// =============================================
+
+// 1. Sanitizar contra inyecciones NoSQL
+app.use(mongoSanitize({
+    replaceWith: '_',  // Reemplazar caracteres prohibidos con '_'
+    onSanitize: ({ req, key }) => {
+        console.log(`🧹 Sanitización NoSQL: campo "${key}" limpiado`);
+    }
+}));
+console.log('🛡️  Sanitización NoSQL activada (express-mongo-sanitize)');
+
+// 2. Sanitizar contra ataques XSS
+app.use(xss());
+console.log('🛡️  Sanitización XSS activada (xss-clean)');
 
 // =============================================
 // CONECTAR A MONGODB ATLAS
@@ -188,7 +287,7 @@ app.get('/api/health', (req, res) => {
 // Rutas de productos
 app.use('/api/products', require('./Routes/products'));
 // Rutas de autenticación
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth', require('./Routes/auth'));
 
 console.log('✅ Rutas API configuradas:');
 console.log('   📱 /api/products - Gestión de productos');

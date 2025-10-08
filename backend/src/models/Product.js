@@ -99,16 +99,16 @@ const productSchema = new mongoose.Schema({
         lowercase: true,
         enum: {
             values: [
-                'computadoras',
-                'laptops', 
-                'smartphones',
-                'tablets',
+                'calzado',
+                'ropa',
                 'accesorios',
-                'audio',
-                'gaming',
-                'hogar-inteligente',
-                'wearables',
-                'otros'
+                'equipamiento',
+                'balones',
+                'bicicletas',
+                'nutrición',
+                'entrenamiento',
+                'yoga',
+            '    otros'
             ],
             message: '{VALUE} no es una categoría válida'
         },
@@ -143,16 +143,17 @@ const productSchema = new mongoose.Schema({
         required: [true, 'Al menos una imagen es obligatoria']
     },
     
-    mainImage: {
+        mainImage: {
         type: String,
         required: [true, 'La imagen principal es obligatoria'],
         validate: {
             validator: function(url) {
-                const urlRegex = /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i;
-                return urlRegex.test(url);
+                const urlRegex = /^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+                 return urlRegex.test(url);
             },
-            message: 'La imagen principal debe ser una URL válida de imagen'
+            message: 'La imagen principal debe ser una URL válida'
         }
+    
     },
      // =============================================
     // INVENTARIO Y DISPONIBILIDAD

@@ -3,6 +3,7 @@
 // =============================================
 
 const User = require('../models/User');
+const logger = require('../Config/logger');
 
 console.log('🔐 Inicializando controlador de autenticación');
 
@@ -62,6 +63,20 @@ const register = async (req, res, next) => {
         
         await user.save();
         console.log(`✅ Usuario creado: ${user.email} (${user.role})`);
+
+        // Log de auditoría
+        logger.audit('USER_REGISTERED', {
+            userId: user._id,
+            email: user.email,
+            role: user.role,
+            ip: req.ip,
+            userAgent: req.get('user-agent')
+        });
+
+        logger.info('Usuario creado', { 
+            email: user.email, 
+            role: user.role 
+        });
         
         // GENERAR TOKEN JWT
         const token = user.generateAuthToken();
@@ -125,8 +140,8 @@ const login = async (req, res, next) => {
         const user = await User.findByCredentials(email);
         
         if (!user) {
-            console.log(`❌ Usuario no encontrado: ${email}`);
-            return res.status(401).json({
+    logger.warn('Login failed - User not found', { email, ip: req.ip });
+    return res.status(401).json({
                 success: false,
                 error: 'Credenciales inválidas',
                 message: 'Email o contraseña incorrectos'
@@ -157,7 +172,10 @@ const login = async (req, res, next) => {
         const isPasswordCorrect = await user.comparePassword(password);
         
         if (!isPasswordCorrect) {
-            console.log(`❌ Contraseña incorrecta para: ${email}`);
+    logger.warn('Login failed - Invalid password', {
+        email,
+        ip: req.ip
+    });
             
             // Incrementar intentos fallidos
             await user.incrementLoginAttempts();
@@ -169,9 +187,16 @@ const login = async (req, res, next) => {
             });
         }
         
-        // LOGIN EXITOSO
-        console.log(`✅ Login exitoso: ${user.email} (${user.role})`);
-        
+                // LOGIN EXITOSO
+        logger.audit('USER_LOGIN', {
+            userId: user._id,
+            email: user.email,
+            ip: req.ip,
+            userAgent: req.get('user-agent')
+        });
+
+        logger.info('Login exitoso', { email: user.email });
+
         // Resetear intentos fallidos
         await user.resetLoginAttempts();
         

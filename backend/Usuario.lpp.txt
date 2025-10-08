@@ -2,3 +2,6 @@ usuario = jhoanvargas4848_db_user
 
 
 Contraseña = 2Ch261cHRm19HCbs
+
+
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZjNWQ0ZmZjZmI5YTYxYmQxMzViYiIsImVtYWlsIjoiYWRtaW5AdGVjaHN0b3JlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1OTk1NDM4OSwiZXhwIjoxNzYyNTQ2Mzg5fQ.tCYqqbFlSaSwZKMIfWZUral_gAzkFSUXNqqaTc1aBfA"

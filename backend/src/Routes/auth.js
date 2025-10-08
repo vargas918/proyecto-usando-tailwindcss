@@ -7,6 +7,12 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const { authLimiter } = require('../middleware/rateLimiter'); // ✨ NUEVO
 const { verificarToken } = require('../middleware/auth');
+const { 
+    registerValidation, 
+    loginValidation, 
+    updateProfileValidation,
+    handleValidationErrors 
+} = require('../validators/authValidators');  // ✨ NUEVO
 
 // Importar controladores
 const {
@@ -29,7 +35,12 @@ console.log('🔐 Inicializando rutas de autenticación');
  * @body    { firstName, lastName, email, password, phone?, role? }
  */
 // Rutas públicas con rate limiting estricto
-router.post('/register', authLimiter, authController.register);
+router.post('/register', 
+    authLimiter,              // 1. Rate limiting
+    registerValidation,        // 2. Validar datos
+    handleValidationErrors,    // 3. Manejar errores
+    authController.register    // 4. Controlador
+);
 
 /**
  * @route   POST /api/auth/login
@@ -37,7 +48,13 @@ router.post('/register', authLimiter, authController.register);
  * @access  Público
  * @body    { email, password }
  */
-router.post('/login', authLimiter, authController.login);
+
+router.post('/login', 
+    authLimiter,
+    loginValidation,
+    handleValidationErrors,
+    authController.login
+);
 
 // =============================================
 // RUTAS PRIVADAS (REQUIEREN AUTENTICACIÓN)
@@ -51,7 +68,7 @@ router.post('/login', authLimiter, authController.login);
  * @access  Privado (requiere token)
  * @query   userId (temporal para testing)
  */
-router.get('/profile', getProfile);
+
 
 /**
  * @route   PUT /api/auth/profile
@@ -60,7 +77,11 @@ router.get('/profile', getProfile);
  * @query   userId (temporal para testing)
  * @body    { firstName?, lastName?, phone?, address?, etc }
  */
-router.put('/profile', updateProfile);
+router.put('/profile',
+    updateProfileValidation,
+    handleValidationErrors,
+    updateProfile
+);
 
 // =============================================
 // LOG DE RUTAS CONFIGURADAS
