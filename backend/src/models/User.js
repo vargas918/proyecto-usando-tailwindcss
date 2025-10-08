@@ -26,6 +26,7 @@
 // Importar librerías necesarias
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 /**
  * ¿Qué es bcryptjs?
@@ -37,7 +38,6 @@ const bcrypt = require('bcryptjs');
  */
 
 console.log('👤 Iniciando creación del modelo User con seguridad avanzada...');
-
 // =============================================
 // ESQUEMA DEL USUARIO
 // =============================================
@@ -81,7 +81,23 @@ const userSchema = new mongoose.Schema({
             message: 'El apellido solo puede contener letras y espacios'
         }
     },
-     // =============================================
+    /*
+ * Expresión regular: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/
+ * 
+ * ^ = inicio de string
+ * [a-zA-Z] = letras minúsculas y mayúsculas
+ * áéíóúÁÉÍÓÚñÑ = caracteres especiales del español
+ * \s = espacios (para nombres compuestos como "María José")
+ * + = uno o más caracteres
+ * $ = final de string
+ * 
+ * ¿Por qué esta validación?
+ * - Evita números en nombres: "Juan123" ❌
+ * - Permite acentos: "José María" ✅
+ * - Permite espacios: "Ana María" ✅
+ * - Evita símbolos raros: "Juan@#$" ❌
+ */
+// =============================================
     // EMAIL - IDENTIFICADOR ÚNICO Y CRÍTICO
     // =============================================
     
@@ -105,7 +121,7 @@ const userSchema = new mongoose.Schema({
         },
         index: true                                   // Índice para búsquedas rápidas por email
     },
-     // =============================================
+    // =============================================
     // CONTRASEÑA - SEGURIDAD CRÍTICA
     // =============================================
     
@@ -171,7 +187,7 @@ const userSchema = new mongoose.Schema({
         type: Date,
         select: false                                 // Ni la fecha de expiración
     },
-     // =============================================
+    // =============================================
     // INFORMACIÓN DE CONTACTO
     // =============================================
     
@@ -235,7 +251,28 @@ const userSchema = new mongoose.Schema({
             maxlength: [50, 'El país no puede tener más de 50 caracteres']
         }
     },
-     // =============================================
+    /*
+ * Opción 1 - Campos separados (❌ menos organizado):
+ * addressStreet: String,
+ * addressCity: String,
+ * addressState: String,
+ * ...
+ * 
+ * Opción 2 - Objeto anidado (✅ mejor organizado):
+ * address: {
+ *   street: String,
+ *   city: String,
+ *   state: String,
+ *   ...
+ * }
+ * 
+ * Ventajas del objeto anidado:
+ * - Más organizado conceptualmente
+ * - Más fácil de manejar en el código
+ * - Se puede expandir fácilmente (múltiples direcciones después)
+ * - Mejor para APIs JSON
+ */
+// =============================================
     // INFORMACIÓN DE PERFIL
     // =============================================
     
@@ -299,7 +336,30 @@ const userSchema = new mongoose.Schema({
         type: Date,
         // Si hay muchos intentos fallidos, bloquear temporalmente
     },
-    // =============================================
+    /*
+ * ¿Cómo funciona loginAttempts + lockUntil?
+ * 
+ * 1. Usuario intenta login con contraseña incorrecta
+ *    → loginAttempts + 1
+ * 
+ * 2. Si loginAttempts >= 5:
+ *    → lockUntil = Date.now() + 30 minutos
+ *    → Usuario bloqueado temporalmente
+ * 
+ * 3. Usuario intenta login durante bloqueo:
+ *    → "Cuenta temporalmente bloqueada"
+ * 
+ * 4. Después de 30 minutos:
+ *    → lockUntil expira
+ *    → loginAttempts = 0
+ *    → Usuario puede intentar de nuevo
+ * 
+ * 5. Login exitoso:
+ *    → loginAttempts = 0
+ *    → lockUntil = null
+ *    → lastLogin = ahora
+ */
+// =============================================
     // INFORMACIÓN COMERCIAL E HISTORIAL
     // =============================================
     
@@ -430,20 +490,6 @@ userSchema.virtual('formattedTotalSpent').get(function() {
         maximumFractionDigits: 0
     }).format(this.totalSpent);
 });
-
-/**
- * EJEMPLOS DE USO DE CAMPOS VIRTUALES:
- * 
- * const user = await User.findById(userId);
- * 
- * console.log(user.firstName);              // "Juan" (guardado en BD)
- * console.log(user.lastName);               // "Pérez" (guardado en BD)
- * console.log(user.fullName);               // "Juan Pérez" (calculado)
- * console.log(user.age);                    // 32 (calculado desde dateOfBirth)
- * console.log(user.fullAddress);            // "Calle 123, Bogotá, Cundinamarca" (calculado)
- * console.log(user.customerLevel);          // "gold" (calculado desde totalSpent)
- * console.log(user.formattedTotalSpent);    // "$2.500.000" (calculado)
- */
 // =============================================
 // MIDDLEWARE PARA ENCRIPTACIÓN DE CONTRASEÑAS
 // =============================================
@@ -571,25 +617,6 @@ userSchema.pre('remove', function(next) {
     
     next();
 });
-
-/**
- * ¿POR QUÉ EL MIDDLEWARE ES TAN IMPORTANTE?
- * 
- * SIN MIDDLEWARE (❌ peligroso):
- * const user = new User({
- *   email: "juan@test.com",
- *   password: "MiPassword123!"  // ¡SE GUARDA EN TEXTO PLANO!
- * });
- * await user.save(); // ¡CONTRASEÑA VISIBLE EN BD!
- * 
- * CON MIDDLEWARE (✅ seguro):
- * const user = new User({
- *   email: "juan@test.com", 
- *   password: "MiPassword123!"  // Texto plano temporalmente
- * });
- * await user.save(); // Middleware encripta automáticamente
- * // BD guarda: "$2b$12$abc123xyz789..."
- */
 // =============================================
 // MÉTODOS DE INSTANCIA - FUNCIONES DEL USUARIO
 // =============================================
@@ -717,6 +744,57 @@ userSchema.methods.removeFromWishlist = function(productId) {
     console.log(`💔 Producto removido de wishlist de ${this.email}`);
     return this.save();
 };
+/**
+ * Método para generar token JWT
+ * Se usa después de login o registro exitoso
+ */
+userSchema.methods.generateAuthToken = function() {
+    console.log(`🎫 Generando token JWT para usuario: ${this.email}`);
+    
+    // Payload del token (datos que contendrá)
+    const payload = {
+        id: this._id,
+        email: this.email,
+        role: this.role
+    };
+    
+    // Firmar el token con el SECRET del .env
+    const token = jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRE || '30d' }
+    );
+    
+    console.log('✅ Token JWT generado exitosamente');
+    console.log(`📅 Expira en: ${process.env.JWT_EXPIRE || '30d'}`);
+    
+    return token;
+};
+/**
+ * Método para obtener perfil público del usuario
+ * Excluye contraseñas, tokens y datos sensibles
+ */
+userSchema.methods.getPublicProfile = function() {
+    return {
+        id: this._id,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        fullName: this.fullName,
+        email: this.email,
+        role: this.role,
+        phone: this.phone,
+        address: this.address,
+        avatar: this.avatar,
+        isActive: this.isActive,
+        isEmailVerified: this.isEmailVerified,
+        customerLevel: this.customerLevel,
+        totalOrders: this.totalOrders,
+        totalSpent: this.totalSpent,
+        formattedTotalSpent: this.formattedTotalSpent,
+        loyaltyPoints: this.loyaltyPoints,
+        createdAt: this.createdAt
+    };
+};
 // =============================================
 // MÉTODOS ESTÁTICOS - FUNCIONES DEL MODELO
 // =============================================
@@ -732,6 +810,16 @@ userSchema.statics.findByEmail = function(email) {
     return this.findOne({ 
         email: email.toLowerCase() 
     }).select('+password');  // Incluir contraseña explícitamente
+};
+/**
+ * Buscar usuario por email E INCLUIR contraseña
+ * Usado específicamente para login (necesitamos verificar password)
+ */
+userSchema.statics.findByCredentials = async function(email) {
+    console.log(`🔐 Buscando usuario para login: ${email}`);
+    return this.findOne({ 
+        email: email.toLowerCase() 
+    }).select('+password');  // +password incluye el campo que normalmente está oculto
 };
 
 /**

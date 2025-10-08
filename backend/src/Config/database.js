@@ -8,19 +8,18 @@ const mongoose = require('mongoose');
  * Conectar a MongoDB Atlas
  * Esta función establece la conexión entre nuestra app y la base de datos
  */
-const connectDB = async () => {
-    try {
-        console.log('🔄 Intentando conectar a MongoDB Atlas...');
-        
-        // Opciones de conexión optimizadas
-        const options = {
-            useNewUrlParser: true,      // Usar parser de URL moderno
-            useUnifiedTopology: true,   // Usar motor de conexión moderno
-            maxPoolSize: 10,            // Máximo 10 conexiones simultáneas
-            serverSelectionTimeoutMS: 5000, // Timeout de 5 segundos
-            socketTimeoutMS: 45000,     // Timeout de socket de 45 segundos
-            family: 4                   // Usar IPv4
-        };
+    const connectDB = async () => {
+        try {
+            console.log('🔄 Intentando conectar a MongoDB Atlas...');
+            
+            // Opciones de conexión optimizadas
+            const options = {
+                
+                maxPoolSize: 10,            // Máximo 10 conexiones simultáneas
+                serverSelectionTimeoutMS: 5000, // Timeout de 5 segundos
+                socketTimeoutMS: 45000,     // Timeout de socket de 45 segundos
+                family: 4                   // Usar IPv4
+            };
 
         // Realizar la conexión
         const conn = await mongoose.connect(process.env.MONGODB_URI, options);

@@ -2,11 +2,13 @@
 // APLICACIÓN PRINCIPAL - TECHSTORE PRO BACKEND
 // =============================================
 
-require('dotenv').config(); // Cargar variables de entorno PRIMERO
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/database');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
+const { generalLimiter } = require('./middleware/rateLimiter'); // ✨ NUEVO
+
 
 console.log('🚀 Iniciando TechStore Pro Backend...');
 
@@ -33,7 +35,12 @@ app.use((req, res, next) => {
     console.log(`${requestType} ${timestamp} - ${method} ${url} - IP: ${ip}`);
     next();
 });
-
+// =============================================
+// RATE LIMITING - PROTECCIÓN CONTRA ABUSO
+// =============================================
+// Aplicar rate limiting a todas las rutas de la API
+app.use('/api/', generalLimiter);
+console.log('🛡️  Rate Limiting activado: 100 peticiones/15min por IP');
 // =============================================
 // CONFIGURACIÓN CORS MEJORADA PARA TECHSTORE
 // =============================================
@@ -129,7 +136,8 @@ app.get('/', (req, res) => {
             'Filtros avanzados por categoría y precio',
             'Búsqueda inteligente de productos',
             'Manejo profesional de errores',
-            'Validaciones automáticas de datos'
+            'Validaciones automáticas de datos',
+            'Rate Limiting contra ataques de fuerza bruta'
         ]
     });
 });
@@ -167,7 +175,8 @@ app.get('/api/health', (req, res) => {
             errorHandler: 'Activo',
             validation: 'Activo',
             cors: 'Configurado',
-            logging: 'Personalizado'
+            logging: 'Personalizado',
+            rateLimiting: 'Activo'
         }
     });
 });
@@ -178,9 +187,12 @@ app.get('/api/health', (req, res) => {
 
 // Rutas de productos
 app.use('/api/products', require('./Routes/products'));
+// Rutas de autenticación
+app.use('/api/auth', require('./routes/auth'));
 
 console.log('✅ Rutas API configuradas:');
 console.log('   📱 /api/products - Gestión de productos');
+console.log('   🔐 /api/auth - Autenticación y usuarios');
 console.log('   🏥 /api/health - Estado del servidor');
 
 // TODO: Futuras rutas

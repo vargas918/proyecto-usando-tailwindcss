@@ -4,6 +4,8 @@
 
 const express = require('express');
 const router = express.Router();
+// Importar middleware de autenticación
+const { protect, authorize } = require('../middleware/auth');
 
 // Importar controladores
 const {
@@ -48,7 +50,7 @@ router.get('/:id', getProductById);
  * @access  Privado (Admin)
  * @body    { name, description, price, category, brand, etc. }
  */
-router.post('/', createProduct);
+router.post('/', protect, authorize('admin'), createProduct);
 
 /**
  * @route   PUT /api/products/:id
@@ -56,7 +58,7 @@ router.post('/', createProduct);
  * @access  Privado (Admin)
  * @body    { name?, description?, price?, etc. }
  */
-router.put('/:id', updateProduct);
+router.put('/:id', protect, authorize('admin'), updateProduct);
 
 /**
  * @route   DELETE /api/products/:id
@@ -64,7 +66,7 @@ router.put('/:id', updateProduct);
  * @access  Privado (Admin)
  * @params  id (MongoDB ObjectId)
  */
-router.delete('/:id', deleteProduct);
+router.delete('/:id', protect, authorize('admin'), deleteProduct);
 
 // =============================================
 // RUTAS ESPECIALES PARA ECOMMERCE

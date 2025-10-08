@@ -165,10 +165,10 @@ const createProduct = async (req, res, next) => {
         console.log(`✅ Producto creado: ${product.name} - ID: ${product._id}`);
 
         res.status(201).json({
-            success: true,
-            message: 'Producto creado exitosamente',
-            data: product
-        });
+    success: true,
+    message: 'Producto creado exitosamente',
+    data: product.toObject() // Convertir a objeto plano
+});
 
     } catch (error) {
         console.error(`❌ Error createProduct: ${error.message}`);
